@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
 
 class SplashDelay{
   static Future<String> waiting() async{
-    await Future.delayed(Duration(milliseconds: 1500));
+    await Future.delayed(Duration(milliseconds: 3000));
     return "done";
   }
 }

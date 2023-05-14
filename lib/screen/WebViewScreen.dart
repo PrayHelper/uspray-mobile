@@ -1,51 +1,55 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, required this.title});
+class WebViewScreen extends StatefulWidget {
+  const WebViewScreen({super.key, required this.controller});
 
-  final String title;
+  final WebViewController controller;
 
   @override
-  State<MainScreen> createState() => _MyHomePageState();
+  State<WebViewScreen> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MainScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class _MyHomePageState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    return WillPopScope(
+        child: WebViewWidget(controller: widget.controller),
+        onWillPop: (){
+          return onGoBack();
+        }
     );
+  }
+
+  Future<bool> showExitPopup() async {
+    return await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Exit App'),
+            content: const Text('Do you want to exit an App?'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('No'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: const Text('Yes'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }
+
+  Future<bool> onGoBack() async {
+    if (await widget.controller.canGoBack()) {
+      widget.controller.goBack();
+      return Future.value(false);
+    } else {
+      Future<bool> dialogResult = showExitPopup();
+      return Future.value(dialogResult);
+    }
   }
 }
