@@ -8,10 +8,10 @@ class WebViewScreen extends StatefulWidget {
   final WebViewController controller;
 
   @override
-  State<WebViewScreen> createState() => _MyHomePageState();
+  State<WebViewScreen> createState() => _WebViewScreenState();
 }
 
-class _MyHomePageState extends State<WebViewScreen> {
+class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

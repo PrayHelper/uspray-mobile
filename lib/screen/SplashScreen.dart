@@ -9,8 +9,6 @@ class SplashScreen extends StatelessWidget {
       child: Image.asset("assets/images/splash-screen.png"),
     );
   }
-
-
 }
 
 class SplashDelay{

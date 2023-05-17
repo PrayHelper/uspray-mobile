@@ -6,9 +6,8 @@ import 'controller/webview_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Get.put(WebviewMainController());
+  Get.put(WebviewMainController());
 
   runApp(PrayHelperApp());
 }
-
 
