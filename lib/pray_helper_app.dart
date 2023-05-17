@@ -32,7 +32,8 @@ class PrayHelperApp extends StatelessWidget {
               //테마설정
               primarySwatch: Colors.blue,
             ),
-            home:WebViewScreen(controller: controller),
+            home:SafeArea(
+              child: WebViewScreen(controller: controller),)
           );
         } else {
           return const SplashScreen();
