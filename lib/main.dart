@@ -4,11 +4,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:prayhelper/funct/getDeviceId.dart';
 import 'package:prayhelper/pray_helper_app.dart';
 import 'controller/webview_controller.dart';
+import 'funct/logger.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(WebviewMainController());
-  print(await getDeviceId());
+  logger.d(await getDeviceId());
   runApp(PrayHelperApp());
 }
 
