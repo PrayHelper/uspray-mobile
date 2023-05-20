@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:prayhelper/funct/get_device_token.dart';
+import 'package:prayhelper/funct/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
@@ -16,9 +18,10 @@ class WebviewMainController extends GetxController {
         onPageStarted: (String url) {},
         onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
-        onNavigationRequest: (NavigationRequest request) {
-          if (request.url.startsWith('https://www.youtube.com/')) {
-            return NavigationDecision.prevent;
+        onNavigationRequest: (NavigationRequest request) async{
+          if (request.url.startsWith('https://accounts.google.com/ServiceLogin')) {
+            //TODO: 이 부분을 request 요청을 보내는 것으로 대체
+            logger.d(await getDeviceToken());
           }
           return NavigationDecision.navigate;
         },

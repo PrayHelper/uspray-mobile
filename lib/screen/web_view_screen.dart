@@ -14,11 +14,13 @@ class WebViewScreen extends StatefulWidget {
 class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        child: WebViewWidget(controller: widget.controller),
-        onWillPop: (){
-          return onGoBack();
-        }
+    return Scaffold(
+      body: WillPopScope(
+          child: WebViewWidget(controller: widget.controller),
+          onWillPop: (){
+            return onGoBack();
+          }
+      ),
     );
   }
 

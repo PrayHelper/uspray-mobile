@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:prayhelper/screen/WebViewScreen.dart';
-import 'package:prayhelper/screen/SplashScreen.dart';
+import 'package:prayhelper/screen/web_view_screen.dart';
+import 'package:prayhelper/screen/splash_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'controller/webview_controller.dart';
 

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 
-Future<String> getDeviceId() async {
+Future<String> getDeviceToken() async {
   String? receivedId;
   var deviceIdentifier = 'unknown';
   var deviceInfo = DeviceInfoPlugin();
