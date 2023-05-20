@@ -24,7 +24,7 @@ class WebviewMainController extends GetxController {
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://flutter.dev'));
+    ..loadRequest(Uri.parse('https://naver.com'));
 
   WebViewController getController() {
     return controller;
