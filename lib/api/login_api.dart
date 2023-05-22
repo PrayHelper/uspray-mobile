@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:prayhelper/funct/get_device_token.dart';
+import 'package:prayhelper/func/get_device_token.dart';
 
 class LoginApi{
   Future<void> sendDeviceToken(String uuid) async {

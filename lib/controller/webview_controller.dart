@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:prayhelper/funct/get_device_token.dart';
-import 'package:prayhelper/funct/logger.dart';
+import 'package:prayhelper/func/get_device_token.dart';
+import 'package:prayhelper/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
