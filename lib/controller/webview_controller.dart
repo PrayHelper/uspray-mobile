@@ -16,10 +16,14 @@ class WebviewMainController extends GetxController {
           // Update loading bar.
         },
         onPageStarted: (String url) {},
-        onPageFinished: (String url) {},
+        onPageFinished: (String url) {
+          if(url.contains("signin-success")){
+
+          }
+        },
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          if (request.url.startsWith('https://accounts.google.com/ServiceLogin')) {
+          if (request.url.contains("signin-success")) {
             //TODO: 이 부분을 request 요청을 보내는 것으로 대체
             logger.d(await getDeviceToken());
           }
@@ -27,7 +31,8 @@ class WebviewMainController extends GetxController {
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://naver.com'));
+    ..loadRequest(Uri.parse('https://www.uspray.kr'));
+
 
   WebViewController getController() {
     return controller;
