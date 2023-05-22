@@ -5,8 +5,7 @@ import 'package:prayhelper/func/getDeviceId.dart';
 import 'package:prayhelper/pray_helper_app.dart';
 import 'controller/webview_controller.dart';
 
-
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(WebviewMainController());
   runApp(PrayHelperApp());

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewScreen extends StatefulWidget {
-  const WebViewScreen({super.key, required this.controller});
+  WebViewScreen({super.key, required this.controller});
 
   final WebViewController controller;
 
@@ -12,13 +12,19 @@ class WebViewScreen extends StatefulWidget {
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
+
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        child: WebViewWidget(controller: widget.controller),
-        onWillPop: (){
-          return onGoBack();
-        }
+
+    return Scaffold(
+      body: WillPopScope(
+          child: WebViewWidget(
+            controller: widget.controller,
+          ),
+          onWillPop: (){
+            return onGoBack();
+          }
+      ),
     );
   }
 
