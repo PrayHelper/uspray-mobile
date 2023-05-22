@@ -6,7 +6,10 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset("assets/images/splash-screen.png"),
+      child: Image.asset("assets/images/splash-screen.png",
+        fit: BoxFit.cover,
+        height: double.infinity,
+        width: double.infinity,),
     );
   }
 }
