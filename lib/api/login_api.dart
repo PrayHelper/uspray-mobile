@@ -8,7 +8,7 @@ class LoginApi{
 
     final response = await http.post(
       //TODO: BACKEND restAPI 주소
-      Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+      Uri.parse('https://api/dev/uspray.kr'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
