@@ -1,7 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:prayhelper/func/get_device_token.dart';
-import 'package:prayhelper/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
@@ -17,21 +17,27 @@ class WebviewMainController extends GetxController {
         },
         onPageStarted: (String url) {},
         onPageFinished: (String url) {
-          if(url.contains("signin-success")){
-
-          }
         },
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          if (request.url.contains("signin-success")) {
-            //TODO: 이 부분을 request 요청을 보내는 것으로 대체
-            logger.d(await getDeviceToken());
-          }
+          //TODO 특정 url을 따른 로직을 핸들링할 수 있음
           return NavigationDecision.navigate;
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://www.uspray.kr'));
+    ..addJavaScriptChannel(
+        "LoginToaster",
+        onMessageReceived: (JavaScriptMessage message){
+          var data = jsonDecode(message.message);
+          //TODO login 성공메시지 명시
+          if(data == "login"){
+            //TODO sendDeviceToken 로직
+            // runJavaScript 구현
+            // getDeviceToken() 사용
+          }
+        }
+    )
+    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'));
 
 
   WebViewController getController() {
