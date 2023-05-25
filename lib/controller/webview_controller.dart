@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:prayhelper/func/get_device_token.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
 
-  var controller = WebViewController()
+  static var controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setBackgroundColor(const Color(0x00000000))
     ..setNavigationDelegate(
@@ -27,20 +28,27 @@ class WebviewMainController extends GetxController {
     )
     ..addJavaScriptChannel(
         "LoginToaster",
-        onMessageReceived: (JavaScriptMessage message){
+        onMessageReceived: (JavaScriptMessage message) async {
           var data = jsonDecode(message.message);
           //TODO login 성공메시지 명시
           if(data == "login"){
             //TODO sendDeviceToken 로직
-            // runJavaScript 구현
+            String token = await getDeviceToken();
+            sendDeviceToken(token);
             // getDeviceToken() 사용
           }
         }
     )
     ..loadRequest(Uri.parse('https://www.dev.uspray.kr'));
 
-
   WebViewController getController() {
     return controller;
   }
+
+  static void sendDeviceToken(String token){
+    //TODO 리액트 JS 코드의 함수에 따라 JS 코드 완성하기
+    controller.runJavaScript('window.reactGetToken($token)');
+  }
 }
+
+
