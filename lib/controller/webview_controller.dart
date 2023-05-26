@@ -31,11 +31,10 @@ class WebviewMainController extends GetxController {
         onMessageReceived: (JavaScriptMessage message) async {
           var data = jsonDecode(message.message);
           //TODO login 성공메시지 명시
-          if(data == "login"){
+          if(data.loginSuccess){
             //TODO sendDeviceToken 로직
             String token = await getDeviceToken();
             sendDeviceToken(token);
-            // getDeviceToken() 사용
           }
         }
     )
@@ -44,11 +43,11 @@ class WebviewMainController extends GetxController {
   WebViewController getController() {
     return controller;
   }
-
   static void sendDeviceToken(String token){
     //TODO 리액트 JS 코드의 함수에 따라 JS 코드 완성하기
-    controller.runJavaScript('window.reactGetToken($token)');
+    controller.runJavaScript('window.getDeviceToken($token)');
   }
+
 }
 
 
