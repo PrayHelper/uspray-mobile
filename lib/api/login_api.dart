@@ -7,8 +7,8 @@ class LoginApi{
     String deviceToken = await getDeviceToken();
 
     final response = await http.post(
-      //TODO: BACKEND restAPI 주소
-      Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+      //TODO: BACKEND dev restAPI 주소
+      Uri.parse('https://api/dev/uspray.kr'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -18,7 +18,7 @@ class LoginApi{
       }),
     );
     if (response.statusCode == 200) {
-      print("device Token is passed");
+      print("resultOK");
     } else {
       print('Request failed: ${response.statusCode}.');
     }
