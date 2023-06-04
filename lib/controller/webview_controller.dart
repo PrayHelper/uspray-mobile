@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prayhelper/func/get_device_token.dart';
+import 'package:prayhelper/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
@@ -27,11 +29,12 @@ class WebviewMainController extends GetxController {
       ),
     )
     ..addJavaScriptChannel(
-        "LoginToaster",
+        "TestToaster",
         onMessageReceived: (JavaScriptMessage message) async {
           var data = jsonDecode(message.message);
+          logger.d(data['loginSuccess']);
           //TODO login 성공메시지 명시
-          if(data.loginSuccess){
+          if(data['loginSuccess']){
             //TODO sendDeviceToken 로직
             String token = await getDeviceToken();
             sendDeviceToken(token);
@@ -45,7 +48,7 @@ class WebviewMainController extends GetxController {
   }
   static void sendDeviceToken(String token){
     //TODO 리액트 JS 코드의 함수에 따라 JS 코드 완성하기
-    controller.runJavaScript('window.getDeviceToken($token)');
+    controller.runJavaScript("window.flutter_inappwebview(\"$token\");");
   }
 
 }
