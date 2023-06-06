@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prayhelper/func/get_device_token.dart';
+import 'package:prayhelper/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
@@ -13,12 +14,9 @@ class WebviewMainController extends GetxController {
     ..setBackgroundColor(const Color(0x00000000))
     ..setNavigationDelegate(
       NavigationDelegate(
-        onProgress: (int progress) {
-          // Update loading bar.
-        },
+        onProgress: (int progress) {},
         onPageStarted: (String url) {},
-        onPageFinished: (String url) {
-        },
+        onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음
@@ -30,22 +28,24 @@ class WebviewMainController extends GetxController {
         "LoginToaster",
         onMessageReceived: (JavaScriptMessage message) async {
           var data = jsonDecode(message.message);
-          //TODO login 성공메시지 명시
-          if(data.loginSuccess){
-            //TODO sendDeviceToken 로직
+          logger.d(data['loginRequest']);
+          //요청에 대한 응답
+          if(data['loginRequest']){
             String token = await getDeviceToken();
             sendDeviceToken(token);
           }
         }
     )
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'));
+    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'))
+    ..enableZoom(false);
+
 
   WebViewController getController() {
     return controller;
   }
+
   static void sendDeviceToken(String token){
-    //TODO 리액트 JS 코드의 함수에 따라 JS 코드 완성하기
-    controller.runJavaScript('window.getDeviceToken($token)');
+    controller.runJavaScript("window.getDeviceToken(\"$token\");");
   }
 
 }
