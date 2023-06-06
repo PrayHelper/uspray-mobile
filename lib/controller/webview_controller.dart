@@ -36,7 +36,9 @@ class WebviewMainController extends GetxController {
           }
         }
     )
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'));
+    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'))
+    ..enableZoom(false);
+
 
   WebViewController getController() {
     return controller;
