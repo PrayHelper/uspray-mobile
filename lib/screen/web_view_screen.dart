@@ -15,17 +15,15 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WillPopScope(
-          child: Column(children: [
-            Expanded(
-              child: WebViewWidget(
-                controller: widget.controller,
-              ),
+      body: SizedBox(
+        child: WillPopScope(
+            child: WebViewWidget(
+              controller: widget.controller,
             ),
-          ]),
-          onWillPop: () {
-            return onGoBack();
-          }),
+            onWillPop: () {
+              return onGoBack();
+            }),
+      ),
     );
   }
 
@@ -35,15 +33,15 @@ class _WebViewScreenState extends State<WebViewScreen> {
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Exit App'),
-            content: const Text('Do you want to exit an App?'),
+            content: const Text('앱을 종료하시겠습니까?'),
             actions: [
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: const Text('No'),
+                child: const Text('아니오'),
               ),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(true),
-                child: const Text('Yes'),
+                child: const Text('종료'),
               ),
             ],
           ),
