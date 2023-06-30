@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:prayhelper/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewScreen extends StatefulWidget {
@@ -14,6 +15,8 @@ class WebViewScreen extends StatefulWidget {
 class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
+    logger.d("웹뷰 빌드 성공");
+
     return Scaffold(
       body: SizedBox(
         child: WillPopScope(
@@ -32,17 +35,29 @@ class _WebViewScreenState extends State<WebViewScreen> {
     return await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Exit App'),
-            content: const Text('앱을 종료하시겠습니까?'),
+            title: const Text('앱 종료', style: TextStyle(fontWeight: FontWeight.w600),),
+            content: const Text('앱에서 나가시겠습니까?'),
             actions: [
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: const Text('아니오'),
-              ),
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).pop(true),
-                child: const Text('종료'),
-              ),
+              Row(children: [
+                Expanded(flex:1, child: Container()),
+                ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text('아니오'),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Colors.green // Text Color (Foreground color)
+                        )),
+                Expanded(flex:3,child: Container()),
+                ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: const Text('종료'),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Colors.green // Text Color (Foreground color)
+                        )),
+                Expanded(flex:1, child: Container()),
+              ]),
+              Container(height: 10,)
             ],
           ),
         ) ??
