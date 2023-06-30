@@ -25,18 +25,36 @@ class WebviewMainController extends GetxController {
         },
       ),
     )
+    //JavaScriptChannel을 웹뷰 컨트롤러에 더한다
     ..addJavaScriptChannel(
-        "LoginToaster",
+        //JavaScriptChannel 이름
+        "FlutterGetDeviceToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          var data = jsonDecode(message.message);
-          logger.d(data['loginRequest']);
-          //요청에 대한 응답
-          if(data['loginRequest']){
-            String token = await getDeviceToken();
-            sendDeviceToken(token);
-          }
-        }
+          // 리액트로부터 통신을 수신하면 로그로 띄운다.
+          logger.d("리액트 수신 완료");
+
+          // 정의한 getDeviceToken 함수로 모바일 토큰 불러옴 -> 통신이랑 무관
+          String token = await getDeviceToken();
+          // 정의한 함수로 리액트로 모바일 토큰 전송 -> 수신이랑 무관
+          sendDeviceToken(token);
+        },
     )
+    ..addJavaScriptChannel(
+        "FlutterGetAuthToken",
+        onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("리액트 수신 완료");
+
+          //요청에 대한 응답
+        },
+    )
+    ..addJavaScriptChannel(
+        "FlutterStoreAuthToken",
+        onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("리액트 수신 완료");
+          //값 전역변수로 저장
+        },
+    )
+
     ..loadRequest(Uri.parse('https://www.dev.uspray.kr'));
 
   WebViewController getController() {
@@ -44,7 +62,12 @@ class WebviewMainController extends GetxController {
   }
 
   static void sendDeviceToken(String token){
-    controller.runJavaScript("window.getDeviceToken(\"$token\");");
+    logger.d("리액트 송신 완료 - $token}");
+    controller.runJavaScript("window.sendDeviceToken(\"$token\");");
+  }
+  static void sendAuthToken(String token){
+    logger.d("리액트 송신 완료");
+    controller.runJavaScript("window.sendAuthToken(\"$token\");");
   }
 
 }
