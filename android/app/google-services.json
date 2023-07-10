@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "209553783215",
+    "project_id": "test-5c2df",
+    "storage_bucket": "test-5c2df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209553783215:android:ffafd5eb79e99168a2d75a",
+        "android_client_info": {
+          "package_name": "com.uspray.prayhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209553783215-r056etlmpcr9oq7rpkl6f0t27o8br11l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU5wT9yVmO-En-XBqs6shk8y9hDZs4J_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209553783215-r056etlmpcr9oq7rpkl6f0t27o8br11l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "209553783215-r4g3snvljnbre0relr91k2dtmh42su3u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uspray.prayhelper"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
