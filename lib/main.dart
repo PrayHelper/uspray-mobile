@@ -9,8 +9,10 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Get.put(WebviewMainController());
+
   await Firebase.initializeApp();
+  Get.put(WebviewMainController());
+
   sleep(Duration(milliseconds: 200));
   runApp(PrayHelperApp());
 }
