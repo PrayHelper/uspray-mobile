@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,6 +39,9 @@ class PrayHelperApp extends StatelessWidget {
       ),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         if (snapshot.hasData) {
+
+          logger.d(snapshot.data![1]);
+
           return MaterialApp(
               title: 'Flutter Demo',
               theme: ThemeData(
