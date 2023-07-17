@@ -63,12 +63,15 @@ class WebviewMainController extends GetxController {
 
   static void sendDeviceToken(String token){
     logger.d("리액트 송신 완료 - $token}");
+    controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
+  }
+  static void sendAuthToken(String token){
+    logger.d("리액트 송신 완료");
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
-  // static void sendAuthToken(String token){
-  //   logger.d("리액트 송신 완료");
-  //   controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
-  // }
+  static void receiveAuthToken(){
+    controller.runJavaScript("window.onReceiveTokenStoredMsg();");
+  }
 
 }
 
