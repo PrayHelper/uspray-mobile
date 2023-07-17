@@ -55,7 +55,7 @@ class WebviewMainController extends GetxController {
         },
     )
 
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'));
+    ..loadRequest(Uri.parse('https://www.intg.uspray.kr'));
 
   WebViewController getController() {
     return controller;
@@ -63,12 +63,12 @@ class WebviewMainController extends GetxController {
 
   static void sendDeviceToken(String token){
     logger.d("리액트 송신 완료 - $token}");
-    controller.runJavaScript("window.sendDeviceToken(\"$token\");");
+    controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
-  static void sendAuthToken(String token){
-    logger.d("리액트 송신 완료");
-    controller.runJavaScript("window.sendAuthToken(\"$token\");");
-  }
+  // static void sendAuthToken(String token){
+  //   logger.d("리액트 송신 완료");
+  //   controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
+  // }
 
 }
 
