@@ -19,11 +19,11 @@ late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 
 void main() async {
+  Get.put(WebviewMainController());
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  Get.put(WebviewMainController());
 
   channel = const AndroidNotificationChannel(
     'high_importance_channel', // id
@@ -62,7 +62,6 @@ void main() async {
     sound: true,
   );
 
-  sleep(Duration(milliseconds: 200));
   runApp(PrayHelperApp());
 }
 

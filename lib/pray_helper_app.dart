@@ -22,6 +22,7 @@ class PrayHelperApp extends StatefulWidget {
 }
 
 class _PrayHelperAppState extends State<PrayHelperApp> {
+
   // 앱 정보 저장
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         if (snapshot.hasData) {
 
-          logger.d(snapshot.data![1]);
+          logger.d("<<"+snapshot.data![1]+">>");
 
           return MaterialApp(
               title: 'Flutter Demo',
@@ -69,8 +70,6 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   }
   @override
   void initState() {
-    super.initState();
-
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
@@ -95,6 +94,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       print(message);
     });
+    super.initState();
   }
 
 }
