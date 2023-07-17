@@ -32,6 +32,7 @@ class PrayHelperApp extends StatelessWidget {
       future: Future.wait(
         [
           SplashDelay.waiting(),
+          getFcmToken()
           //Fetching WebPage
         ],
       ),

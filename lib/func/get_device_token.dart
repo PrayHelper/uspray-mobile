@@ -25,8 +25,12 @@ Future<String> getDeviceToken() async {
   return deviceIdentifier;
 }
 
-Future<String?> getFcmToken() async{
+Future<String> getFcmToken() async{
   final fcmToken = await FirebaseMessaging.instance.getToken();
 
-  return fcmToken;
+  if(fcmToken == null){
+    return "unknown";
+  }else{
+    return fcmToken!;
+  }
 }
