@@ -34,9 +34,16 @@ class WebviewMainController extends GetxController {
           logger.d("리액트 수신 완료");
 
           // 정의한 getDeviceToken 함수로 모바일 토큰 불러옴 -> 통신이랑 무관
-          String token = await getDeviceToken();
+          // String token = await getDeviceToken();
+          String? token = await getFcmToken();
+          String fcmToken;
+          if(token == null){
+            fcmToken = "unknown";
+          } else{
+            fcmToken = token!;
+          }
           // 정의한 함수로 리액트로 모바일 토큰 전송 -> 수신이랑 무관
-          sendDeviceToken(token);
+          sendDeviceToken(fcmToken);
         },
     )
     ..addJavaScriptChannel(
