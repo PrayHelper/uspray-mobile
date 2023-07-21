@@ -4,15 +4,12 @@ import 'dart:math';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:prayhelper/func/logger.dart';
 import 'package:prayhelper/screen/web_view_screen.dart';
 import 'package:prayhelper/screen/splash_screen.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'controller/webview_controller.dart';
+import 'controller/notification_controller.dart';
 import 'func/get_device_token.dart';
-import 'main.dart';
 
 class PrayHelperApp extends StatefulWidget {
   PrayHelperApp({super.key});
@@ -68,9 +65,11 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   void initState() {
     super.initState();
     setupInteractedMessage();
+    FlutterLocalNotification.init();
+    FlutterLocalNotification.requestNotificationPermission();
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
-      //TODO
+      await FlutterLocalNotification.showNotification();
     });
 
   }
@@ -87,7 +86,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
 
     FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
   }
-  //TODO
+  //TODO URL
   void _handleMessage(RemoteMessage message) {
     logger.d("WHAT?????????????????????????????????????");
     //Handler

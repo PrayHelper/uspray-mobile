@@ -1,5 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import '../func/logger.dart';
+
 class FlutterLocalNotification {
   FlutterLocalNotification._();
 
@@ -26,6 +28,7 @@ class FlutterLocalNotification {
   }
 
   static requestNotificationPermission() {
+    logger.d("permission passed?");
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
         IOSFlutterLocalNotificationsPlugin>()
@@ -37,6 +40,7 @@ class FlutterLocalNotification {
   }
 
   static Future<void> showNotification() async {
+
     const AndroidNotificationDetails androidNotificationDetails =
     AndroidNotificationDetails('channel id', 'channel name',
         channelDescription: 'channel description',
@@ -50,5 +54,8 @@ class FlutterLocalNotification {
 
     await flutterLocalNotificationsPlugin.show(
         0, 'test title', 'test body', notificationDetails);
+    logger.d("all passed but not shown");
   }
+
+
 }
