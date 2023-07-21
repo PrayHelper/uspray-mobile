@@ -21,47 +21,6 @@ void main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  //TODO 이게뭔지 확인
-  //-------------
-  channel = const AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    description:
-    'This channel is used for important notifications.', // description
-    importance: Importance.high,
-  );
-
-  var initialzationSettingsAndroid =
-  AndroidInitializationSettings('@mipmap/ic_launcher');
-
-  var initialzationSettingsIOS = DarwinInitializationSettings(
-    requestSoundPermission: true,
-    requestBadgePermission: true,
-    requestAlertPermission: true,
-  );
-
-  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-      AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(channel);
-
-  var initializationSettings = InitializationSettings(
-      android: initialzationSettingsAndroid, iOS: initialzationSettingsIOS);
-
-  await flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
-  );
-
-  //iOS 명시없이 진행해도 되는지?
-  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
-  //TODO --------------------------------------------
-
   runApp(PrayHelperApp());
 }
 

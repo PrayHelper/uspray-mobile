@@ -35,8 +35,6 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
           .runJavaScriptReturningResult('document.getElementById("username").innerText') as String;
       return uuid;
     }
-
-
     return FutureBuilder<List<String>?>(
 
       future: Future.wait(
@@ -65,74 +63,33 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
         }
       },
     );
-
-
   }
   @override
   void initState() {
     super.initState();
-
     setupInteractedMessage();
 
-
-    //TODO 수정필요
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
-      logger.d("onMessage: $message");
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
-      var androidNotiDetails = AndroidNotificationDetails(
-        channel.id,
-        channel.name,
-        channelDescription: channel.description,
-      );
-      var iOSNotificationDetails = const DarwinNotificationDetails();
-      var details =
-      NotificationDetails(android: androidNotiDetails, iOS: iOSNotificationDetails);
-      if (notification != null) {
-        flutterLocalNotificationsPlugin.show(
-          notification.hashCode,
-          notification.title,
-          notification.body,
-          details,
-        );
-      }
+      //TODO
     });
 
-    // FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-    //   RemoteNotification? notification = message.notification;
-    //   AndroidNotification? android = message.notification?.android;
-    //   var androidNotiDetails = AndroidNotificationDetails(
-    //     channel.id,
-    //     channel.name,
-    //     channelDescription: channel.description,
-    //   );
-    //   var iOSNotiDetails = const DarwinNotificationDetails();
-    //   var details =
-    //   NotificationDetails(android: androidNotiDetails, iOS: iOSNotiDetails);
-    //   if (notification != null) {
-    //     flutterLocalNotificationsPlugin.show(
-    //       notification.hashCode,
-    //       notification.title,
-    //       notification.body,
-    //       details,
-    //     );
-    //   }
-    // });
   }
 
   Future<void> setupInteractedMessage() async {
+
     RemoteMessage? initialMessage =
     await FirebaseMessaging.instance.getInitialMessage();
 
     if (initialMessage != null) {
+      logger.d("WHAT!!!!!!!!!!!!!!!!!!!!!!!!!");
       _handleMessage(initialMessage);
     }
 
     FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
   }
-
-  // TODO
+  //TODO
   void _handleMessage(RemoteMessage message) {
+    logger.d("WHAT?????????????????????????????????????");
     //Handler
   }
 
