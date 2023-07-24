@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications_platform_interface/src/types.dart';
 import 'package:get/get.dart';
 import 'package:prayhelper/func/get_device_token.dart';
 import 'package:prayhelper/func/logger.dart';
@@ -34,9 +35,11 @@ class WebviewMainController extends GetxController {
           logger.d("리액트 수신 완료");
 
           // 정의한 getDeviceToken 함수로 모바일 토큰 불러옴 -> 통신이랑 무관
-          String token = await getDeviceToken();
+          // String token = await getDeviceToken();
+          String fcmToken = await getFcmToken();
+
           // 정의한 함수로 리액트로 모바일 토큰 전송 -> 수신이랑 무관
-          sendDeviceToken(token);
+          sendDeviceToken(fcmToken);
         },
     )
     ..addJavaScriptChannel(
@@ -71,6 +74,10 @@ class WebviewMainController extends GetxController {
   }
   static void receiveAuthToken(){
     controller.runJavaScript("window.onReceiveTokenStoredMsg();");
+  }
+
+  void loadUrl(String url) {
+    controller.loadRequest(Uri.parse(url));
   }
 
 }
