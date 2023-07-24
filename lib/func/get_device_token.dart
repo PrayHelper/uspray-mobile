@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<String> getDeviceToken() async {
   String? receivedId;
@@ -22,4 +23,14 @@ Future<String> getDeviceToken() async {
   }
 
   return deviceIdentifier;
+}
+
+Future<String> getFcmToken() async{
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+
+  if(fcmToken == null){
+    return "unknown";
+  }else{
+    return fcmToken!;
+  }
 }
