@@ -3,12 +3,11 @@ import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:prayhelper/controller/notification.dart';
 import 'package:prayhelper/func/logger.dart';
 import 'package:prayhelper/screen/web_view_screen.dart';
 import 'package:prayhelper/screen/splash_screen.dart';
 import 'controller/webview_controller.dart';
-import 'controller/notification_controller.dart';
 import 'func/get_device_token.dart';
 
 class PrayHelperApp extends StatefulWidget {
@@ -26,12 +25,6 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
     final controller = WebviewMainController.to
         .getController();
 
-    //TODO 몰라 어딘가에 배치해
-    Future<String> _getUuid(BuildContext context) async {
-      final String uuid = await controller
-          .runJavaScriptReturningResult('document.getElementById("username").innerText') as String;
-      return uuid;
-    }
     return FutureBuilder<List<String>?>(
 
       future: Future.wait(
@@ -64,32 +57,25 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   @override
   void initState() {
     super.initState();
-    setupInteractedMessage();
-    FlutterLocalNotification.init();
-    FlutterLocalNotification.requestNotificationPermission();
-
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
-      await FlutterLocalNotification.showNotification();
-    });
 
   }
 
-  Future<void> setupInteractedMessage() async {
-
-    RemoteMessage? initialMessage =
-    await FirebaseMessaging.instance.getInitialMessage();
-
-    if (initialMessage != null) {
-      logger.d("WHAT!!!!!!!!!!!!!!!!!!!!!!!!!");
-      _handleMessage(initialMessage);
-    }
-
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
-  }
-  //TODO URL
-  void _handleMessage(RemoteMessage message) {
-    logger.d("WHAT?????????????????????????????????????");
-    //Handler
-  }
+  // Future<void> setupInteractedMessage() async {
+  //
+  //   RemoteMessage? initialMessage =
+  //   await FirebaseMessaging.instance.getInitialMessage();
+  //
+  //   if (initialMessage != null) {
+  //     logger.d("WHAT!!!!!!!!!!!!!!!!!!!!!!!!!");
+  //     _handleMessage(initialMessage);
+  //   }
+  //
+  //   FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+  // }
+  // //TODO URL
+  // void _handleMessage(RemoteMessage message) {
+  //   logger.d("WHAT?????????????????????????????????????");
+  //   //Handler
+  // }
 
 }
