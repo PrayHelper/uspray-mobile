@@ -1,6 +1,7 @@
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-
+import 'package:prayhelper/controller/local_notification.dart';
+import 'package:prayhelper/controller/webview_controller.dart';
 import '../func/logger.dart';
 
 void fcmSetting() async{
@@ -19,6 +20,15 @@ void fcmSetting() async{
     AndroidNotification? android = message.notification?.android;
     if (notification != null && android != null) {
       logger.d("여기가 Local Notification 영역");
+      displayLocalNotification(flutterLocalNotificationsPlugin, notification);
     }
+  });
+
+  // Listen to the onMessageOpenedApp stream
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    WebviewMainController.to.loadUrl("https://www.naver.com/");
+    //TODO REAL
+    // final url = message.data['url'];
+    // if (url != null) {}
   });
 }

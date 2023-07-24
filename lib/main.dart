@@ -6,7 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:prayhelper/pray_helper_app.dart';
-import 'controller/notification.dart';
+import 'controller/local_notification.dart';
 import 'controller/fcm_setting.dart';
 import 'controller/webview_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,18 +14,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'func/logger.dart';
 
 late AndroidNotificationChannel channel;
-late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-
-
 
 void main() async {
   Get.put(WebviewMainController());
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  //FCM & local 알림 명시
+  await notificationSetting();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   fcmSetting();
-
 
   runApp(PrayHelperApp());
 }
@@ -33,8 +32,5 @@ void main() async {
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  logger.d("Handling a background message: ${message.messageId}");
-  showNotification();
 }
-
 

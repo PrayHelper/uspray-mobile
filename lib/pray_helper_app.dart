@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:prayhelper/controller/notification.dart';
+import 'package:prayhelper/controller/local_notification.dart';
 import 'package:prayhelper/func/logger.dart';
 import 'package:prayhelper/screen/web_view_screen.dart';
 import 'package:prayhelper/screen/splash_screen.dart';
@@ -59,23 +59,5 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
     super.initState();
 
   }
-
-  // Future<void> setupInteractedMessage() async {
-  //
-  //   RemoteMessage? initialMessage =
-  //   await FirebaseMessaging.instance.getInitialMessage();
-  //
-  //   if (initialMessage != null) {
-  //     logger.d("WHAT!!!!!!!!!!!!!!!!!!!!!!!!!");
-  //     _handleMessage(initialMessage);
-  //   }
-  //
-  //   FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
-  // }
-  // //TODO URL
-  // void _handleMessage(RemoteMessage message) {
-  //   logger.d("WHAT?????????????????????????????????????");
-  //   //Handler
-  // }
 
 }
