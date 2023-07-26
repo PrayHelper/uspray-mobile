@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>9511981432-8a2gihrjkne8ahak5pelqk3ip15cv7ip.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.9511981432-8a2gihrjkne8ahak5pelqk3ip15cv7ip</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>9511981432-d7uvi3fb7mt8iv7782te700ne87l421n.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBCmtJ3QaqmuagzFXbEPcQkkaT_jpalCo4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>9511981432</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.uspray.prayhelper</string>
+	<key>PROJECT_ID</key>
+	<string>prayhelper-8563a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>prayhelper-8563a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:9511981432:ios:9541ca3fce5b285848388d</string>
+</dict>
+</plist>

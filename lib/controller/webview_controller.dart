@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications_platform_interface/src/types.dart';
 import 'package:get/get.dart';
 import 'package:prayhelper/func/get_device_token.dart';
 import 'package:prayhelper/func/logger.dart';
@@ -10,6 +11,7 @@ class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
 
   static var controller = WebViewController()
+    ..enableZoom(false)
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setBackgroundColor(const Color(0x00000000))
     ..setNavigationDelegate(
@@ -24,28 +26,58 @@ class WebviewMainController extends GetxController {
         },
       ),
     )
+    //JavaScriptChannel을 웹뷰 컨트롤러에 더한다
     ..addJavaScriptChannel(
-        "LoginToaster",
+        //JavaScriptChannel 이름
+        "FlutterGetDeviceToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          var data = jsonDecode(message.message);
-          logger.d(data['loginRequest']);
-          //요청에 대한 응답
-          if(data['loginRequest']){
-            String token = await getDeviceToken();
-            sendDeviceToken(token);
-          }
-        }
-    )
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr'))
-    ..enableZoom(false);
+          // 리액트로부터 통신을 수신하면 로그로 띄운다.
+          logger.d("리액트 수신 완료");
 
+          // 정의한 getDeviceToken 함수로 모바일 토큰 불러옴 -> 통신이랑 무관
+          // String token = await getDeviceToken();
+          String fcmToken = await getFcmToken();
+
+          // 정의한 함수로 리액트로 모바일 토큰 전송 -> 수신이랑 무관
+          sendDeviceToken(fcmToken);
+        },
+    )
+    ..addJavaScriptChannel(
+        "FlutterGetAuthToken",
+        onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("리액트 수신 완료");
+
+          //요청에 대한 응답
+        },
+    )
+    ..addJavaScriptChannel(
+        "FlutterStoreAuthToken",
+        onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("리액트 수신 완료");
+          //값 전역변수로 저장
+        },
+    )
+
+    ..loadRequest(Uri.parse('https://www.intg.uspray.kr'));
 
   WebViewController getController() {
     return controller;
   }
 
   static void sendDeviceToken(String token){
-    controller.runJavaScript("window.getDeviceToken(\"$token\");");
+    logger.d("리액트 송신 완료 - $token}");
+    controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
+  }
+  static void sendAuthToken(String token){
+    logger.d("리액트 송신 완료");
+    controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
+  }
+  static void receiveAuthToken(){
+    controller.runJavaScript("window.onReceiveTokenStoredMsg();");
+  }
+
+  void loadUrl(String url) {
+    controller.loadRequest(Uri.parse(url));
   }
 
 }
