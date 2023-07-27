@@ -1,15 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uspray.prayhelper">
+    package="com.prayhelper.uspray">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-        android:label="prayhelper"
+        android:label="Uspray"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/launcher_icon">
         <activity
-            android:name="com.example.prayhelper.MainActivity"
+            android:name="com.prayhelper.uspray.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
@@ -28,9 +28,13 @@
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="FLUTTER_NOTIFICATION_CLICK" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="www.uspray.kr" />
+
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

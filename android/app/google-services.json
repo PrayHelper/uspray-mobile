@@ -7,6 +7,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:9511981432:android:c726041606025bea48388d",
+        "android_client_info": {
+          "package_name": "com.prayhelper.uspray"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9511981432-20asotbukmi3cqf3m16t47b4ii60nnfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC41jiIF3PQAr81OqNTQmSqJOt8qZWCytI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9511981432-20asotbukmi3cqf3m16t47b4ii60nnfl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "9511981432-8a2gihrjkne8ahak5pelqk3ip15cv7ip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uspray.prayhelper"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:9511981432:android:3259d4bf2ea1dbec48388d",
         "android_client_info": {
           "package_name": "com.uspray.prayhelper"
@@ -37,6 +73,13 @@
             {
               "client_id": "9511981432-20asotbukmi3cqf3m16t47b4ii60nnfl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "9511981432-8a2gihrjkne8ahak5pelqk3ip15cv7ip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uspray.prayhelper"
+              }
             }
           ]
         }
