@@ -1,6 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:prayhelper/controller/webview_controller.dart';
+import 'package:com.uspray.prayhelper/controller/webview_controller.dart';
 
 import '../func/logger.dart';
 

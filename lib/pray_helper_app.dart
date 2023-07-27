@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:prayhelper/func/logger.dart';
-import 'package:prayhelper/screen/web_view_screen.dart';
-import 'package:prayhelper/screen/splash_screen.dart';
+import 'package:com.uspray.prayhelper/func/logger.dart';
+import 'package:com.uspray.prayhelper/screen/web_view_screen.dart';
+import 'package:com.uspray.prayhelper/screen/splash_screen.dart';
 import 'package:uni_links/uni_links.dart';
 import 'controller/webview_controller.dart';
 import 'func/get_device_token.dart';

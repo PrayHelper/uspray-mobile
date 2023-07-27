@@ -8,8 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:prayhelper/main.dart';
-import 'package:prayhelper/pray_helper_app.dart';
+import 'package:com.uspray.prayhelper/main.dart';
+import 'package:com.uspray.prayhelper/pray_helper_app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
