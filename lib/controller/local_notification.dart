@@ -10,8 +10,20 @@ FlutterLocalNotificationsPlugin();
 Future<void> notificationSetting() async {
   const AndroidInitializationSettings initializationSettingsAndroid =
   AndroidInitializationSettings('notification_icon');
-  final InitializationSettings initializationSettings =
-  InitializationSettings(android: initializationSettingsAndroid);
+
+  DarwinInitializationSettings initializationSettingsDarwin =
+      const DarwinInitializationSettings(
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      );
+
+  InitializationSettings initializationSettings =
+    InitializationSettings(
+        android: initializationSettingsAndroid,
+        iOS: initializationSettingsDarwin,
+    );
+
   await flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
     onDidReceiveNotificationResponse: (payload) async {
@@ -31,8 +43,10 @@ Future<void> displayLocalNotification(
     importance: Importance.max,
     priority: Priority.high,
   );
+  const DarwinNotificationDetails darwinPlatformChannelSpecifics = DarwinNotificationDetails(badgeNumber: 1);
+
   const NotificationDetails platformChannelSpecifics =
-  NotificationDetails(android: androidPlatformChannelSpecifics);
+  NotificationDetails(android: androidPlatformChannelSpecifics, iOS: darwinPlatformChannelSpecifics);
   await flutterLocalNotificationsPlugin.show(
     0,
     notification.title,
