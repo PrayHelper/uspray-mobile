@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:9511981432:android:3259d4bf2ea1dbec48388d",
         "android_client_info": {
-          "package_name": "com.uspray.prayhelper"
+          "package_name": "com.prayhelper.uspray"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "9511981432-d7uvi3fb7mt8iv7782te700ne87l421n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.uspray.prayhelper",
+            "package_name": "com.prayhelper.uspray",
             "certificate_hash": "4440c1fb2e65c1188c6b023abd07eafccf8773fb"
           }
         },

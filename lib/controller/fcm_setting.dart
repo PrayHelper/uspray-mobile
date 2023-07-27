@@ -1,7 +1,7 @@
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:com.uspray.prayhelper/controller/local_notification.dart';
-import 'package:com.uspray.prayhelper/controller/webview_controller.dart';
+import 'package:com.prayhelper.uspray/controller/local_notification.dart';
+import 'package:com.prayhelper.uspray/controller/webview_controller.dart';
 import '../func/logger.dart';
 
 void fcmSetting() async{
