@@ -40,11 +40,10 @@ void fcmSetting() async{
   //앱단위가 아니라 main에서 정의하는 메시지 핸들링
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     RemoteNotification? notification = message.notification;
-    AndroidNotification? android = message.notification?.android;
 
     //여기는 사실 local notification의 영역임
-    if (notification != null && android != null) {
-      logger.d("Android 로컬변환 영역");
+    if (notification != null) {
+      logger.d("로컬변환 영역");
       displayLocalNotification(flutterLocalNotificationsPlugin, notification);
     }
 

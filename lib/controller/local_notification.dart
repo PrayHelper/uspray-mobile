@@ -37,6 +37,7 @@ Future<void> displayLocalNotification(
     FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
     RemoteNotification notification) async {
   const AndroidNotificationDetails androidPlatformChannelSpecifics =
+  //TODO 아직 채널을 정하진 않았음
   AndroidNotificationDetails(
     'your_channel_id',
     'your_channel_name',
