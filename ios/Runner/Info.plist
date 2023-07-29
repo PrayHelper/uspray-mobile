@@ -29,7 +29,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.prayhelper.uspray</string>
+				<string>uspray</string>
 			</array>
 		</dict>
 	</array>
@@ -64,7 +64,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>FirebaseAppDelegateProxyEnabled</key>
-    <string>NO</string>
+	<string>NO</string>
 </dict>
-
 </plist>
