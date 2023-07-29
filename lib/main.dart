@@ -51,12 +51,16 @@ Future<void> initDeepLinks() async {
 }
 
 void handleDeepLink(Uri? uri) {
+
+  logger.d("DONE");
+
   if (uri == null) {
+    logger.d("uri null");
     return; // No deep link
   }
 
   // Check if the deep link matches your custom URL scheme
-  if (uri.scheme == 'uspray') {
+  if (uri.scheme == 'uspraymobile') {
     logger.d("<<"+uri.toString()+">>");
     // Here, you can extract the path or query parameters from the URI to navigate
     // to the appropriate screen or perform specific tasks within your app.

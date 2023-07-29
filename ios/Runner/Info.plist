@@ -25,12 +25,14 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string></string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>uspray</string>
-			</array>
+			<key>CFBundleTypeRole</key>
+                  <string>Editor</string>
+                  <key>CFBundleURLName</key>
+                  <string>uspraymobile</string>
+                  <key>CFBundleURLSchemes</key>
+                  <array>
+                    <string>uspraymobile</string>
+                  </array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
