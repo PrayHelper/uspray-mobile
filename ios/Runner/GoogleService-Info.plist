@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>9511981432-8a2gihrjkne8ahak5pelqk3ip15cv7ip.apps.googleusercontent.com</string>
+	<string>9511981432-a3jmfkpgj2pg1rho9qouih6mi795kg6k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.9511981432-8a2gihrjkne8ahak5pelqk3ip15cv7ip</string>
+	<string>com.googleusercontent.apps.9511981432-a3jmfkpgj2pg1rho9qouih6mi795kg6k</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>9511981432-d7uvi3fb7mt8iv7782te700ne87l421n.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.uspray.prayhelper</string>
+	<string>com.prayhelper.uspray</string>
 	<key>PROJECT_ID</key>
 	<string>prayhelper-8563a</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:9511981432:ios:9541ca3fce5b285848388d</string>
+	<string>1:9511981432:ios:113e52044f64382748388d</string>
 </dict>
 </plist>

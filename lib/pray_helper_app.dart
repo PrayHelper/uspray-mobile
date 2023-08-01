@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'dart:math';
-
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:prayhelper/controller/local_notification.dart';
-import 'package:prayhelper/func/logger.dart';
-import 'package:prayhelper/screen/web_view_screen.dart';
-import 'package:prayhelper/screen/splash_screen.dart';
+import 'package:com.prayhelper.uspray/func/logger.dart';
+import 'package:com.prayhelper.uspray/screen/web_view_screen.dart';
+import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:uni_links/uni_links.dart';
 import 'controller/webview_controller.dart';
 import 'func/get_device_token.dart';
+
+bool _initialUriIsHandled = false;
 
 class PrayHelperApp extends StatefulWidget {
   PrayHelperApp({super.key});
@@ -18,7 +18,10 @@ class PrayHelperApp extends StatefulWidget {
 }
 
 class _PrayHelperAppState extends State<PrayHelperApp> {
-
+  Uri? _initialUri;
+  Uri? _latestUri;
+  Object? _err;
+  StreamSubscription? _sub;
   // 앱 정보 저장
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,36 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   @override
   void initState() {
     super.initState();
-
+    _handleInitialUri();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+  Future<void> _handleInitialUri() async {
+
+    if (!_initialUriIsHandled) {
+      _initialUriIsHandled = true;
+
+      logger.d('_handleInitialUri called');
+      try {
+        final uri = await getInitialUri();
+        if (uri == null) {logger.d('no initial uri');
+        } else {
+          logger.d('got initial uri: $uri');
+        }
+        if (!mounted) return;
+        setState(() => _initialUri = uri);
+      } on PlatformException {
+        logger.d('falied to get initial uri');
+      } on FormatException catch (err) {
+        if (!mounted) return;
+        logger.d('malformed initial uri');
+        setState(() => _err = err);
+      }
+    }
+  }
+
 
 }

@@ -1,4 +1,4 @@
-package com.uspray.prayhelper
+package com.prayhelper.uspray
 
 import io.flutter.embedding.android.FlutterActivity
 

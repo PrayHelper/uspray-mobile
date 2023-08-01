@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications_platform_interface/src/types.dart';
 import 'package:get/get.dart';
-import 'package:prayhelper/func/get_device_token.dart';
-import 'package:prayhelper/func/logger.dart';
+import 'package:com.prayhelper.uspray/func/get_device_token.dart';
+import 'package:com.prayhelper.uspray/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewMainController extends GetxController {
@@ -45,9 +45,9 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterGetAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("리액트 수신 완료");
+          logger.d("리프레시 토큰 수신 완료");
+          String refreshToken = message.message;
 
-          //요청에 대한 응답
         },
     )
     ..addJavaScriptChannel(
@@ -58,7 +58,7 @@ class WebviewMainController extends GetxController {
         },
     )
 
-    ..loadRequest(Uri.parse('https://www.intg.uspray.kr'));
+    ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
 
   WebViewController getController() {
     return controller;
@@ -68,7 +68,7 @@ class WebviewMainController extends GetxController {
     logger.d("리액트 송신 완료 - $token}");
     controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
   }
-  static void sendAuthToken(String token){
+  static void sendAuthToken(String? token){
     logger.d("리액트 송신 완료");
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
