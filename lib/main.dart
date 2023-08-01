@@ -51,24 +51,14 @@ Future<void> initDeepLinks() async {
 }
 
 void handleDeepLink(Uri? uri) {
+  //핸들링 코드 정의
 
-  logger.d("DONE");
+  logger.d("App Link ON");
 
   if (uri == null) {
     logger.d("uri null");
     return; // No deep link
   }
-
-  // Check if the deep link matches your custom URL scheme
-  if (uri.scheme == 'uspraymobile') {
-    logger.d("<<"+uri.toString()+">>");
-    // Here, you can extract the path or query parameters from the URI to navigate
-    // to the appropriate screen or perform specific tasks within your app.
-
-    // For example, if the URL is "myapp://main", you can navigate to the main screen.
-    // If the URL is "myapp://details?id=123", you can open the details screen for the item with id=123.
-
-    // You can use Navigator to navigate to different screens based on the deep link.
-  }
+  WebviewMainController.to.loadUrl(uri.toString());
 }
 
