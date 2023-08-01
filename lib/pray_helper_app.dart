@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:com.prayhelper.uspray/func/logger.dart';
 import 'package:com.prayhelper.uspray/screen/web_view_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:uni_links/uni_links.dart';
 import 'controller/webview_controller.dart';
 import 'func/get_device_token.dart';
@@ -65,28 +65,24 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
 
   @override
   void dispose() {
-    _sub?.cancel();
     super.dispose();
   }
-
   Future<void> _handleInitialUri() async {
-    // In this example app this is an almost useless guard, but it is here to
-    // show we are not going to call getInitialUri multiple times, even if this
-    // was a weidget that will be disposed of (ex. a navigation route change).
+
     if (!_initialUriIsHandled) {
       _initialUriIsHandled = true;
+
+      logger.d('_handleInitialUri called');
       try {
         final uri = await getInitialUri();
-        if (uri == null) {
-          logger.d('no initial uri');
+        if (uri == null) {logger.d('no initial uri');
         } else {
-          WebviewMainController.to.loadUrl(uri.toString());
+          logger.d('got initial uri: $uri');
         }
         if (!mounted) return;
         setState(() => _initialUri = uri);
       } on PlatformException {
-        // Platform messages may fail but we ignore the exception
-        logger.d('failed to get initial uri');
+        logger.d('falied to get initial uri');
       } on FormatException catch (err) {
         if (!mounted) return;
         logger.d('malformed initial uri');
@@ -94,5 +90,6 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
       }
     }
   }
+
 
 }
