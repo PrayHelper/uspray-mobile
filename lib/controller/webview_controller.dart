@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications_platform_interface/src/types.dart';
 import 'package:get/get.dart';
 import 'package:com.prayhelper.uspray/func/get_device_token.dart';
 import 'package:com.prayhelper.uspray/func/logger.dart';
