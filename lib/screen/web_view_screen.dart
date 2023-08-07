@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:com.prayhelper.uspray/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../func/get_device_token.dart';
-
 class WebViewScreen extends StatefulWidget {
   WebViewScreen({super.key, required this.controller});
 

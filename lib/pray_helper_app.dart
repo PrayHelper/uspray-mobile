@@ -5,13 +5,13 @@ import 'package:com.prayhelper.uspray/screen/web_view_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:uni_links/uni_links.dart';
+import 'controller/token_controller.dart';
 import 'controller/webview_controller.dart';
-import 'func/get_device_token.dart';
 
 bool _initialUriIsHandled = false;
 
 class PrayHelperApp extends StatefulWidget {
-  PrayHelperApp({super.key});
+  const PrayHelperApp({super.key});
 
   @override
   State<PrayHelperApp> createState() => _PrayHelperAppState();
@@ -22,41 +22,32 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   Uri? _latestUri;
   Object? _err;
   StreamSubscription? _sub;
+
   // 앱 정보 저장
   @override
   Widget build(BuildContext context) {
-    final controller = WebviewMainController.to
-        .getController();
+    final controller = WebviewMainController.to.getController();
 
     return FutureBuilder<List<String>?>(
-
       future: Future.wait(
-        [
-          SplashDelay.waiting(),
-          getFcmToken()
-          //Fetching WebPage
-        ],
+        [SplashDelay.waiting(), getFcmToken()],
       ),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
-        if (snapshot.hasData) {
-
-          logger.d("<<"+snapshot.data![1]+">>");
-
-          return MaterialApp(
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                //테마설정
-                primarySwatch: Colors.blue,
-              ),
-              home: SafeArea(
-                child: WebViewScreen(controller: controller),)
-          );
-        } else {
-          return const SplashScreen();
-        }
+        return (snapshot.hasData)
+            ? MaterialApp(
+                title: 'Flutter Demo',
+                theme: ThemeData(
+                  //테마설정
+                  primarySwatch: Colors.blue,
+                ),
+                home: SafeArea(
+                  child: WebViewScreen(controller: controller),
+                ))
+            : const SplashScreen();
       },
     );
   }
+
   @override
   void initState() {
     super.initState();
@@ -67,15 +58,16 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   void dispose() {
     super.dispose();
   }
-  Future<void> _handleInitialUri() async {
 
+  Future<void> _handleInitialUri() async {
     if (!_initialUriIsHandled) {
       _initialUriIsHandled = true;
 
       logger.d('_handleInitialUri called');
       try {
         final uri = await getInitialUri();
-        if (uri == null) {logger.d('no initial uri');
+        if (uri == null) {
+          logger.d('no initial uri');
         } else {
           logger.d('got initial uri: $uri');
         }
@@ -90,6 +82,4 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
       }
     }
   }
-
-
 }

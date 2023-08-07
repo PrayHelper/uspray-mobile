@@ -1,8 +1,6 @@
-import 'dart:convert';
-
+import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:com.prayhelper.uspray/func/get_device_token.dart';
 import 'package:com.prayhelper.uspray/func/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
