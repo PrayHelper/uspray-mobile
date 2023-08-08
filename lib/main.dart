@@ -3,8 +3,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:com.prayhelper.uspray/pray_helper_app.dart';
-import 'controller/deep_controller.dart';
-import 'controller/notification/init_notification.dart';
+import 'bloc/link_sharing/deeplinking.dart';
+import 'bloc/notification/init_notification.dart';
 import 'controller/webview_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 

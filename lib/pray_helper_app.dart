@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:com.prayhelper.uspray/func/logger.dart';
-import 'package:com.prayhelper.uspray/screen/web_view_screen.dart';
+import 'package:com.prayhelper.uspray/screen/webview_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:uni_links/uni_links.dart';
 import 'controller/token_controller.dart';
 import 'controller/webview_controller.dart';
+import 'debug/logger.dart';
 
 bool _initialUriIsHandled = false;
 

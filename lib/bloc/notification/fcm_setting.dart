@@ -1,10 +1,10 @@
 
 import 'dart:io';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:com.prayhelper.uspray/controller/notification/local_notification_setting.dart';
 import 'package:com.prayhelper.uspray/controller/webview_controller.dart';
-import '../../func/logger.dart';
+
+import '../../debug/logger.dart';
+import 'local_notification_setting.dart';
 
 void fcmSetting() async{
   FirebaseMessaging messaging = FirebaseMessaging.instance;
