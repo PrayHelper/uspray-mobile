@@ -43,8 +43,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
               Row(children: [
                 Expanded(flex:1, child: Container()),
                 ElevatedButton(
-                    // onPressed: () => Navigator.of(context).pop(false),
-                  onPressed: () => shareLinkForAOS("https://www.dev.uspray.kr/"),
+                    onPressed: () => Navigator.of(context).pop(false),
                     child: const Text('아니오'),
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
