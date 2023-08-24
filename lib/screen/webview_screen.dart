@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -42,7 +43,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
               Row(children: [
                 Expanded(flex:1, child: Container()),
                 ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(false),
+                    // onPressed: () => Navigator.of(context).pop(false),
+                  onPressed: () => shareLinkForAOS("https://www.dev.uspray.kr/"),
                     child: const Text('아니오'),
                     style: ElevatedButton.styleFrom(
                         backgroundColor:

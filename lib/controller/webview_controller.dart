@@ -1,3 +1,4 @@
+import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,34 +30,32 @@ class WebviewMainController extends GetxController {
         //JavaScriptChannel 이름
         "FlutterGetDeviceToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          // 리액트로부터 통신을 수신하면 로그로 띄운다.
-          logger.d("리액트 수신 완료");
-
-          // 정의한 getDeviceToken 함수로 모바일 토큰 불러옴 -> 통신이랑 무관
-          // String token = await getDeviceToken();
           String fcmToken = await getFcmToken();
-
-          // 정의한 함수로 리액트로 모바일 토큰 전송 -> 수신이랑 무관
           sendDeviceToken(fcmToken);
         },
     )
     ..addJavaScriptChannel(
         "FlutterGetAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("리프레시 토큰 수신 완료");
-          String refreshToken = message.message;
-
+          String refreshToken = await getRefreshToken();
+          sendAuthToken(refreshToken);
         },
     )
     ..addJavaScriptChannel(
         "FlutterStoreAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("리액트 수신 완료");
-          //값 전역변수로 저장
+          storeRefreshToken(message.message);
+        },
+    )
+    //TODO Sharing 채널명 정해야함
+    ..addJavaScriptChannel(
+        "NameForSharing",
+        onMessageReceived: (JavaScriptMessage message) async {
+          shareLinkForAOS(message.message);
         },
     )
 
-    ..loadRequest(Uri.parse('https://www.uspray.kr/'));
+    ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
 
   WebViewController getController() {
     return controller;
@@ -70,9 +69,9 @@ class WebviewMainController extends GetxController {
     logger.d("리액트 송신 완료");
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
-  static void receiveAuthToken(){
-    controller.runJavaScript("window.onReceiveTokenStoredMsg();");
-  }
+  // static void receiveAuthToken(){
+  //   controller.runJavaScript("window.onReceiveTokenStoredMsg();");
+  // }
 
   void loadUrl(String url) {
     controller.loadRequest(Uri.parse(url));
