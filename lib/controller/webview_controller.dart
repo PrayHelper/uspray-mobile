@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,7 @@ class WebviewMainController extends GetxController {
         //JavaScriptChannel 이름
         "FlutterGetDeviceToken",
         onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("WHEN REQUEST DEVICE TOKEN");
           String fcmToken = await getFcmToken();
           sendDeviceToken(fcmToken);
         },
@@ -37,6 +40,7 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterGetAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("get request to sending auth token");
           String refreshToken = await getRefreshToken();
           sendAuthToken(refreshToken);
         },
@@ -44,17 +48,18 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterStoreAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          storeRefreshToken(message.message);
+          logger.d("Get request to store");
+          await storeRefreshToken(message.message);
+          sendAuthToken(message.message);
         },
     )
-    //TODO Sharing 채널명 정해야함
     ..addJavaScriptChannel(
-        "NameForSharing",
+        "FlutterShareLink",
         onMessageReceived: (JavaScriptMessage message) async {
-          shareLinkForAOS(message.message);
+          Map<String, dynamic> data = jsonDecode(message.message);
+          shareLinkForAOS(data['url']);
         },
     )
-
     ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
 
   WebViewController getController() {
@@ -69,9 +74,6 @@ class WebviewMainController extends GetxController {
     logger.d("리액트 송신 완료");
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
-  // static void receiveAuthToken(){
-  //   controller.runJavaScript("window.onReceiveTokenStoredMsg();");
-  // }
 
   void loadUrl(String url) {
     controller.loadRequest(Uri.parse(url));

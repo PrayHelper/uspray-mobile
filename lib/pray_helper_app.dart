@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:com.prayhelper.uspray/screen/webview_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:uni_links/uni_links.dart';
 import 'controller/token_controller.dart';
 import 'controller/webview_controller.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'debug/logger.dart';
 
 bool _initialUriIsHandled = false;
@@ -27,6 +29,10 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   @override
   Widget build(BuildContext context) {
     final controller = WebviewMainController.to.getController();
+    if (controller.platform is AndroidWebViewController) {
+      logger.d('AndroidWebViewController Settign Done');
+      AndroidWebViewController.enableDebugging(true);
+    }
 
     return FutureBuilder<List<String>?>(
       future: Future.wait(

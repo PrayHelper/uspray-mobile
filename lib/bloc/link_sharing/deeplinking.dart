@@ -21,12 +21,9 @@ Future<void> initDeepLinks() async {
 }
 
 void handleDeepLink(Uri? uri) {
-  //핸들링 코드 정의
-
-  logger.d("App Link ON");
+  //핸들링 코드정의
 
   if (uri == null) {
-    logger.d("uri null");
     return; // No deep link
   }
   WebviewMainController.to.loadUrl(uri.toString());
