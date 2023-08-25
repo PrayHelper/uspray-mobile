@@ -17,7 +17,6 @@ class WebViewScreen extends StatefulWidget {
 class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
-    logger.d("웹뷰 빌드 성공");
 
     return Scaffold(
       body: SizedBox(

@@ -11,7 +11,7 @@ Future<String> getFcmToken() async{
   }
 }
 
-void storeRefreshToken(String token) async {
+Future<void> storeRefreshToken(String token) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString('refreshToken', token);
 }

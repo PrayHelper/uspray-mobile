@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
@@ -44,17 +46,18 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterStoreAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          storeRefreshToken(message.message);
+          await storeRefreshToken(message.message);
+          sendAuthToken(message.message);
         },
     )
-    //TODO Sharing 채널명 정해야함
     ..addJavaScriptChannel(
-        "NameForSharing",
+        "FlutterShareLink",
         onMessageReceived: (JavaScriptMessage message) async {
-          shareLinkForAOS(message.message);
+          logger.d("SHARED IS CONNECTED");
+          Map<String, dynamic> data = jsonDecode(message.message);
+          shareLinkForAOS(data['url']);
         },
     )
-
     ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
 
   WebViewController getController() {
@@ -62,16 +65,11 @@ class WebviewMainController extends GetxController {
   }
 
   static void sendDeviceToken(String token){
-    logger.d("리액트 송신 완료 - $token}");
     controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
   }
   static void sendAuthToken(String? token){
-    logger.d("리액트 송신 완료");
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
-  // static void receiveAuthToken(){
-  //   controller.runJavaScript("window.onReceiveTokenStoredMsg();");
-  // }
 
   void loadUrl(String url) {
     controller.loadRequest(Uri.parse(url));
