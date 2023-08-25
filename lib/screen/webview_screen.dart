@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -16,7 +17,6 @@ class WebViewScreen extends StatefulWidget {
 class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
-    logger.d("웹뷰 빌드 성공");
 
     return Scaffold(
       body: SizedBox(
