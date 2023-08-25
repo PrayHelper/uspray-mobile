@@ -14,11 +14,11 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
-class SplashDelay{
-  static Future<String> waiting() async{
-    await Future.delayed(Duration(milliseconds: 1000));
-    return "done";
-  }
-}
+// class SplashDelay{
+//   static Future<String> waiting() async{
+//     await Future.delayed(Duration(milliseconds: 1000));
+//     return "done";
+//   }
+// }
 
 

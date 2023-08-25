@@ -30,13 +30,12 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   Widget build(BuildContext context) {
     final controller = WebviewMainController.to.getController();
     if (controller.platform is AndroidWebViewController) {
-      logger.d('AndroidWebViewController Settign Done');
       AndroidWebViewController.enableDebugging(true);
     }
 
     return FutureBuilder<List<String>?>(
       future: Future.wait(
-        [SplashDelay.waiting(), getFcmToken()],
+        [getFcmToken()],
       ),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         return (snapshot.hasData)

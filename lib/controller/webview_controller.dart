@@ -32,7 +32,6 @@ class WebviewMainController extends GetxController {
         //JavaScriptChannel 이름
         "FlutterGetDeviceToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("WHEN REQUEST DEVICE TOKEN");
           String fcmToken = await getFcmToken();
           sendDeviceToken(fcmToken);
         },
@@ -40,7 +39,6 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterGetAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("get request to sending auth token");
           String refreshToken = await getRefreshToken();
           sendAuthToken(refreshToken);
         },
@@ -48,7 +46,6 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterStoreAuthToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("Get request to store");
           await storeRefreshToken(message.message);
           sendAuthToken(message.message);
         },
@@ -67,11 +64,9 @@ class WebviewMainController extends GetxController {
   }
 
   static void sendDeviceToken(String token){
-    logger.d("리액트 송신 완료 - $token}");
     controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
   }
   static void sendAuthToken(String? token){
-    logger.d("리액트 송신 완료");
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
 

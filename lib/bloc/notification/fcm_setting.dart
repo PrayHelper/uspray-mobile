@@ -43,7 +43,6 @@ void fcmSetting() async{
 
     //여기는 사실 local notification의 영역임
     if (notification != null) {
-      logger.d("로컬변환 영역");
       displayLocalNotification(flutterLocalNotificationsPlugin, notification);
     }
 
