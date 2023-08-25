@@ -53,6 +53,7 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterShareLink",
         onMessageReceived: (JavaScriptMessage message) async {
+          logger.d("SHARED IS CONNECTED");
           Map<String, dynamic> data = jsonDecode(message.message);
           shareLinkForAOS(data['url']);
         },
