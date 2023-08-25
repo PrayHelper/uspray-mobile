@@ -44,6 +44,7 @@ void fcmSetting() async{
     //여기는 사실 local notification의 영역임
     if (notification != null) {
       displayLocalNotification(flutterLocalNotificationsPlugin, notification);
+
     }
 
   });
