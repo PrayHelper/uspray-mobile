@@ -18,5 +18,5 @@ Future<void> storeRefreshToken(String token) async {
 
 Future<String> getRefreshToken() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getString('refreshToken') ?? "unknown";
+  return prefs.getString('refreshToken') ?? "";
 }
