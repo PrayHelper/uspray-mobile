@@ -1,10 +1,6 @@
 import 'dart:async';
-import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
-import '../debug/logger.dart';
 
 class WebViewScreen extends StatefulWidget {
   WebViewScreen({super.key, required this.controller});

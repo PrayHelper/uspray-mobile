@@ -35,7 +35,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
 
     return FutureBuilder<List<String>?>(
       future: Future.wait(
-        [getFcmToken()],
+        [getFcmToken(), SplashDelay.waiting() ],
       ),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         return (snapshot.hasData)
