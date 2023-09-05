@@ -6,19 +6,16 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset("assets/images/splash-screen.png",
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,),
+      child: Image.asset("assets/images/splash-screen.png")
     );
   }
 }
 
-// class SplashDelay{
-//   static Future<String> waiting() async{
-//     await Future.delayed(Duration(milliseconds: 1000));
-//     return "done";
-//   }
-// }
+class SplashDelay{
+  static Future<String> waiting() async{
+    await Future.delayed(Duration(milliseconds: 1000));
+    return "done";
+  }
+}
 
 
