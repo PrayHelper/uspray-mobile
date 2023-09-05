@@ -38,6 +38,9 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
         [getFcmToken()],
       ),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
+        if (snapshot.hasData) {
+          logger.d(snapshot.data![0]);
+        }
         return (snapshot.hasData)
             ? MaterialApp(
                 title: 'Flutter Demo',
