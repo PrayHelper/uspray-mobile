@@ -1,6 +1,4 @@
 import 'package:com.prayhelper.uspray/controller/webview_controller.dart';
-import 'package:com.prayhelper.uspray/pray_helper_app.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:uni_links/uni_links.dart';
 
 import '../../debug/logger.dart';
@@ -31,4 +29,3 @@ void handleDeepLink(Uri? uri) {
 
   }
 }
-// https://www.dev.uspray.kr/main?share=173
