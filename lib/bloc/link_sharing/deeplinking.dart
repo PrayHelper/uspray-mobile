@@ -28,6 +28,7 @@ void handleDeepLink(Uri? uri) {
     logger.d(uri);
     //TODO Can handling specific path
       WebviewMainController.to.loadUrl(uri.toString());
+
   }
 }
 // https://www.dev.uspray.kr/main?share=173
