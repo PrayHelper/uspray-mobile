@@ -25,10 +25,9 @@ Future<void> initDeepLinks() async {
 void handleDeepLink(Uri? uri) {
   //핸들링 코드정의
   if (uri != null) {
-    final path = uri.path;
-    logger.d(path);
+    logger.d(uri);
     //TODO Can handling specific path
-      WebviewMainController.to.loadUrl(path);
+      WebviewMainController.to.loadUrl(uri.toString());
   }
 }
 // https://www.dev.uspray.kr/main?share=173
