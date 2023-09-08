@@ -20,7 +20,7 @@ void main() async {
 
   await initNotification();
   await initDeepLinks();
-  await InvokeDefault.openManageDefaultAppsSettings();
+  // await InvokeDefault.openManageDefaultAppsSettings();
 
   runApp(PrayHelperApp());
 }

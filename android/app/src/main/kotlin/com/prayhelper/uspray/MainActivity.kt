@@ -1,12 +1,12 @@
 package com.prayhelper.uspray
 
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
+import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
-import android.content.Intent
-import android.provider.Settings
-import androidx.annotation.NonNull
-import android.net.Uri
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "com.prayhelper.uspray/invokeDefault"
@@ -28,7 +28,9 @@ class MainActivity: FlutterActivity() {
     }
 
     private fun openManageDefaultAppsSettings() {
-        val intent = Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri: Uri = Uri.fromParts("package", "com.prayhelper.uspray", null)
+        intent.setData(uri)
         startActivity(intent)
     }
 }
