@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:com.prayhelper.uspray/screen/webview_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
