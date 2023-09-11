@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../debug/logger.dart';
+
 class WebViewScreen extends StatefulWidget {
   WebViewScreen({super.key, required this.controller});
 
@@ -63,7 +65,9 @@ class _WebViewScreenState extends State<WebViewScreen> {
   }
 
   Future<bool> onGoBack() async {
-    if (await widget.controller.canGoBack()) {
+    if (await widget.controller.canGoBack() &&
+        await widget.controller.currentUrl() !=
+            'https://www.dev.uspray.kr/main') {
       widget.controller.goBack();
       return Future.value(false);
     } else {
