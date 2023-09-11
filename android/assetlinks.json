@@ -1,7 +1,7 @@
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
-    "namespace": "com.prayhelper.uspray",
+    "namespace": "android_app",
     "package_name": "com.prayhelper.uspray",
     "sha256_cert_fingerprints":
     ["A1:03:54:0B:89:9A:AA:72:00:93:67:59:17:6E:86:16:8D:16:7B:E6:83:99:4C:56:B6:3B:17:F3:65:4A:DB:94"]
