@@ -30,7 +30,6 @@
             </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -43,6 +42,16 @@
                 <data
                     android:host="www.intg.uspray.kr"
                     android:scheme="https" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!--TODO: 카카오링크를 사용하는 경우 아래의 data를 추가해주세요.-->
+                <data android:host="kakaolink"
+                    android:scheme="kakao${YOUR_NATIVE_APP_KEY}" />
             </intent-filter>
 
         </activity>
