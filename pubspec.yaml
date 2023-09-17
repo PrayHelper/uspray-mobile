@@ -45,7 +45,6 @@ dependencies:
   uni_links: ^0.5.1
   shared_preferences: ^2.2.0
   share_plus: ^7.1.0
-  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -63,12 +62,12 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/logo.png"
-  min_sdk_android: 21
+#
+#flutter_launcher_icons:
+#  android: true
+#  ios: true
+#  image_path: "assets/images/logo.png"
+#  min_sdk_android: 21
 
 flutter:
 
