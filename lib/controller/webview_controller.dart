@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../debug/logger.dart';
-
 class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
 
@@ -53,12 +51,11 @@ class WebviewMainController extends GetxController {
     ..addJavaScriptChannel(
         "FlutterShareLink",
         onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("SHARED IS CONNECTED");
           Map<String, dynamic> data = jsonDecode(message.message);
           shareLinkForAOS(data['url']);
         },
     )
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
+    ..loadRequest(Uri.parse('https://www.uspray.kr/'));
 
   WebViewController getController() {
     return controller;

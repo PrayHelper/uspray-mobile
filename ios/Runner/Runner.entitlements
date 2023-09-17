@@ -7,8 +7,6 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:www.uspray.kr</string>
-		<string>applinks:www.dev.uspray.kr</string>
-        <string>applinks:www.intg.uspray.kr</string>
 	</array>
 </dict>
 </plist>

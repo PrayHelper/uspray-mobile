@@ -35,13 +35,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.dev.uspray.kr"
-                    android:scheme="https" />
-                <data
                     android:host="www.uspray.kr"
-                    android:scheme="https" />
-                <data
-                    android:host="www.intg.uspray.kr"
                     android:scheme="https" />
             </intent-filter>
 

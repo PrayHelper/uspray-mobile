@@ -64,8 +64,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
   }
 
   Future<bool> onGoBack() async {
-    //TODO URL CHANGE
-    if (await widget.controller.currentUrl() != 'https://www.dev.uspray.kr/main') {
+    if (await widget.controller.currentUrl() != 'https://www.uspray.kr/main') {
       if(!await widget.controller.canGoBack()){
         Future<bool> dialogResult = showExitPopup();
         return Future.value(dialogResult);
