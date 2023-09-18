@@ -19,7 +19,9 @@ class WebviewMainController extends GetxController {
       NavigationDelegate(
         onProgress: (int progress) {},
         onPageStarted: (String url) {},
-        onPageFinished: (String url) {},
+          onPageFinished: (String url) {
+            final script = "document.body.style.zoom = '100%';";
+          },
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음

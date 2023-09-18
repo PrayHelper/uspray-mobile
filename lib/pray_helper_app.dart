@@ -34,19 +34,20 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
 
     return FutureBuilder<List<String>?>(
       future: Future.wait(
-        [getFcmToken(), SplashDelay.waiting() ],
+        [getFcmToken(), SplashDelay.waiting()],
       ),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         return (snapshot.hasData)
             ? MaterialApp(
-                title: 'Flutter Demo',
-                theme: ThemeData(
-                  //테마설정
-                  primarySwatch: Colors.blue,
-                ),
-                home: SafeArea(
-                  child: WebViewScreen(controller: controller),
-                ))
+                builder: (context, child) {
+                  return MediaQuery(
+                    child: SafeArea(
+                      child: WebViewScreen(controller: controller),
+                    ),
+                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  );
+                },
+              )
             : const SplashScreen();
       },
     );
@@ -86,6 +87,4 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
       }
     }
   }
-
-
 }
