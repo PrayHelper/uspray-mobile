@@ -40,11 +40,13 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
         return (snapshot.hasData)
             ? MaterialApp(
                 builder: (context, child) {
+                  final mediaQueryData = MediaQuery.of(context);
+                  final scale = mediaQueryData.textScaleFactor.clamp(1.0, 1.3);
                   return MediaQuery(
                     child: SafeArea(
                       child: WebViewScreen(controller: controller),
                     ),
-                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                    data: MediaQuery.of(context).copyWith(textScaleFactor: scale),
                   );
                 },
               )

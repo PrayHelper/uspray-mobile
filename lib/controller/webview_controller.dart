@@ -19,11 +19,9 @@ class WebviewMainController extends GetxController {
       NavigationDelegate(
         onProgress: (int progress) {},
         onPageStarted: (String url) {},
-          onPageFinished: (String url) {
-            final script = "document.body.style.zoom = '100%';";
-          },
+        onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
-        onNavigationRequest: (NavigationRequest request) async{
+        onNavigationRequest: (NavigationRequest request) async {
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음
           return NavigationDecision.navigate;
         },
@@ -31,34 +29,34 @@ class WebviewMainController extends GetxController {
     )
     //JavaScriptChannel을 웹뷰 컨트롤러에 더한다
     ..addJavaScriptChannel(
-        //JavaScriptChannel 이름
-        "FlutterGetDeviceToken",
-        onMessageReceived: (JavaScriptMessage message) async {
-          String fcmToken = await getFcmToken();
-          sendDeviceToken(fcmToken);
-        },
+      //JavaScriptChannel 이름
+      "FlutterGetDeviceToken",
+      onMessageReceived: (JavaScriptMessage message) async {
+        String fcmToken = await getFcmToken();
+        sendDeviceToken(fcmToken);
+      },
     )
     ..addJavaScriptChannel(
-        "FlutterGetAuthToken",
-        onMessageReceived: (JavaScriptMessage message) async {
-          String refreshToken = await getRefreshToken();
-          sendAuthToken(refreshToken);
-        },
+      "FlutterGetAuthToken",
+      onMessageReceived: (JavaScriptMessage message) async {
+        String refreshToken = await getRefreshToken();
+        sendAuthToken(refreshToken);
+      },
     )
     ..addJavaScriptChannel(
-        "FlutterStoreAuthToken",
-        onMessageReceived: (JavaScriptMessage message) async {
-          await storeRefreshToken(message.message);
-          sendAuthToken(message.message);
-        },
+      "FlutterStoreAuthToken",
+      onMessageReceived: (JavaScriptMessage message) async {
+        await storeRefreshToken(message.message);
+        sendAuthToken(message.message);
+      },
     )
     ..addJavaScriptChannel(
-        "FlutterShareLink",
-        onMessageReceived: (JavaScriptMessage message) async {
-          logger.d("SHARED IS CONNECTED");
-          Map<String, dynamic> data = jsonDecode(message.message);
-          shareLinkForAOS(data['url']);
-        },
+      "FlutterShareLink",
+      onMessageReceived: (JavaScriptMessage message) async {
+        logger.d("SHARED IS CONNECTED");
+        Map<String, dynamic> data = jsonDecode(message.message);
+        shareLinkForAOS(data['url']);
+      },
     )
     ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
 
@@ -66,17 +64,15 @@ class WebviewMainController extends GetxController {
     return controller;
   }
 
-  static void sendDeviceToken(String token){
+  static void sendDeviceToken(String token) {
     controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
   }
-  static void sendAuthToken(String? token){
+
+  static void sendAuthToken(String? token) {
     controller.runJavaScript("window.onReceiveAuthToken(\"$token\");");
   }
 
   void loadUrl(String url) {
     controller.loadRequest(Uri.parse(url));
   }
-
 }
-
-
