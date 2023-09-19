@@ -29,6 +29,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   Widget build(BuildContext context) {
     final controller = WebviewMainController.to.getController();
     controller.enableZoom(false);
+    controller.set
     if (controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);
     }
