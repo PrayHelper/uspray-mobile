@@ -12,7 +12,6 @@ class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
 
   static var controller = WebViewController()
-    ..enableZoom(false)
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setBackgroundColor(const Color(0x00000000))
     ..setNavigationDelegate(
@@ -27,7 +26,7 @@ class WebviewMainController extends GetxController {
         },
       ),
     )
-    //JavaScriptChannel을 웹뷰 컨트롤러에 더한다
+    ..enableZoom(false)
     ..addJavaScriptChannel(
         //JavaScriptChannel 이름
         "FlutterGetDeviceToken",
@@ -74,6 +73,8 @@ class WebviewMainController extends GetxController {
   void loadUrl(String url) {
     controller.loadRequest(Uri.parse(url));
   }
+
+
 
 }
 
