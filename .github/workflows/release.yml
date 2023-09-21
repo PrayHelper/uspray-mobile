@@ -15,12 +15,12 @@ jobs:
 
       - name: Replace URLs
         run: |
-          for file in
-            android/app/src/main/AndroidManifest.xml
-            ios/Runner/Runner.entitlements
-            lib/bloc/notification/fcm_setting.dart
-            lib/bloc/notification/local_notification_setting.dart
-            lib/controller/webview_controller.dart
+          for file in \
+            android/app/src/main/AndroidManifest.xml \
+            ios/Runner/Runner.entitlements \
+            lib/bloc/notification/fcm_setting.dart \
+            lib/bloc/notification/local_notification_setting.dart \
+            lib/controller/webview_controller.dart \
             lib/screen/webview_screen.dart; do
             sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' "$file"
           done
