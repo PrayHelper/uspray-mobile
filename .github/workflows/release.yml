@@ -15,7 +15,7 @@ jobs:
 
       - name: Replace URLs
         run: |
-          sed -i 's|http://www.dev.uspray.kr|http://www.uspray.kr|g' path/to/your/files
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' path/to/your/files
 
       - name: Commit and Push Changes
         run: |
