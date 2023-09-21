@@ -7,7 +7,6 @@ import 'package:uni_links/uni_links.dart';
 import 'controller/token_controller.dart';
 import 'controller/webview_controller.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
-import 'debug/logger.dart';
 
 bool _initialUriIsHandled = false;
 
@@ -64,21 +63,16 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
     if (!_initialUriIsHandled) {
       _initialUriIsHandled = true;
 
-      logger.d('_handleInitialUri called');
       try {
         final uri = await getInitialUri();
         if (uri == null) {
-          logger.d('no initial uri');
         } else {
-          logger.d('got initial uri: $uri');
         }
         if (!mounted) return;
         setState(() => _initialUri = uri);
       } on PlatformException {
-        logger.d('falied to get initial uri');
       } on FormatException catch (err) {
         if (!mounted) return;
-        logger.d('malformed initial uri');
         setState(() => _err = err);
       }
     }
