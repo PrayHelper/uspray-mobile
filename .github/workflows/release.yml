@@ -1,0 +1,26 @@
+name: Change URL to Deploy
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  url_change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Replace URLs
+        run: |
+          sed -i 's|http://www.dev.uspray.kr|http://www.uspray.kr|g' path/to/your/files
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email ${{ secrets.GIT_USER_EMAIL }}
+          git config --global user.name ${{ secrets.GIT_USER_NAME }}
+          git add .
+          git commit -m "www.dev.uspray.kr -> www.uspray.kr"
+          git push
