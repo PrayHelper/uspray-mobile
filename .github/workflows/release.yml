@@ -28,6 +28,8 @@ jobs:
           git config --global user.name ${{ secrets.GIT_USER_NAME }}
           git add .
           git commit -m "URL changed: dev.uspray -> uspray"
+          pr_branch=${{ github.head_ref }}
+          echo "Actual PR branch name: $pr_branch"
           git checkout -b tmp
           git checkout develop
           git merge tmp
