@@ -1,4 +1,4 @@
-name: Change URLs in Multiple Files
+name: Deploy
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
       - name: Replace URLs
         run: |
           for file in
-            src/main/AndroidManifest.xml
+            android/app/src/main/AndroidManifest.xml
             ios/Runner/Runner.entitlements
             lib/bloc/notification/fcm_setting.dart
             lib/bloc/notification/local_notification_setting.dart
