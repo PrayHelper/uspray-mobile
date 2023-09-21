@@ -28,4 +28,8 @@ jobs:
           git config --global user.name ${{ secrets.GIT_USER_NAME }}
           git add .
           git commit -m "URL changed: dev.uspray -> uspray"
+          git checkout -b tmp
+          git checkout develop
+          git merge tmp
+          git branch -d tmp
           git push origin develop
