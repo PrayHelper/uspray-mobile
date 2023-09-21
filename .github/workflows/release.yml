@@ -15,8 +15,8 @@ jobs:
 
       - name: Replace URLs
         run: |
-          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' android/app/src/main/AndroidManifest.xml
           sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' ios/Runner/Runner.entitlements
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' android/app/src/main/AndroidManifest.xml
           sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/bloc/notification/fcm_setting.dart
           sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/bloc/notification/local_notification_setting.dart
           sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/controller/webview_controller.dart
