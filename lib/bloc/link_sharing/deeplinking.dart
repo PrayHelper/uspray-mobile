@@ -1,8 +1,6 @@
 import 'package:com.prayhelper.uspray/controller/webview_controller.dart';
 import 'package:uni_links/uni_links.dart';
 
-import '../../debug/logger.dart';
-
 Future<void> initDeepLinks() async {
   // Listen for incoming deep links
   try {
@@ -23,7 +21,6 @@ Future<void> initDeepLinks() async {
 void handleDeepLink(Uri? uri) {
   //핸들링 코드정의
   if (uri != null) {
-    logger.d(uri);
     //TODO Can handling specific path
       WebviewMainController.to.loadUrl(uri.toString());
 

@@ -26,7 +26,7 @@ Future<void> notificationSetting() async {
     initializationSettings,
     onDidReceiveNotificationResponse: (payload) async {
       //TODO loadUrl(payload.input!)
-      WebviewMainController.to.loadUrl("https://www.naver.com/");
+      WebviewMainController.to.loadUrl("https://www.uspray.kr/main/");
     }
   );
 }
