@@ -20,4 +20,5 @@ void main() async {
   await initDeepLinks();
   // await InvokeDefault.openManageDefaultAppsSettings();
   runApp(PrayHelperApp());
+
 }
