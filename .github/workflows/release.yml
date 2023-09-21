@@ -1,4 +1,4 @@
-name: Change URL to Deploy
+name: Change URLs in Multiple Files
 
 on:
   pull_request:
@@ -15,12 +15,20 @@ jobs:
 
       - name: Replace URLs
         run: |
-          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' path/to/your/files
+          for file in
+            src/main/AndroidManifest.xml
+            ios/Runner/Runner.entitlements
+            lib/bloc/notification/fcm_setting.dart
+            lib/bloc/notification/local_notification_setting.dart
+            lib/controller/webview_controller.dart
+            lib/screen/webview_screen.dart; do
+            sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' "$file"
+          done
 
       - name: Commit and Push Changes
         run: |
           git config --global user.email ${{ secrets.GIT_USER_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USER_NAME }}
           git add .
-          git commit -m "www.dev.uspray.kr -> www.uspray.kr"
+          git commit -m "URL changed: dev.uspray -> uspray"
           git push
