@@ -15,16 +15,12 @@ jobs:
 
       - name: Replace URLs
         run: |
-          files=("android/app/src/main/AndroidManifest.xml"
-                  "ios/Runner/Runner.entitlements"
-                  "lib/bloc/notification/fcm_setting.dart"
-                  "lib/bloc/notification/local_notification_setting.dart"
-                  "lib/controller/webview_controller.dart"
-                  "lib/screen/webview_screen.dart")
-
-          for file in "${files[@]}"; do
-            sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' "$file"
-          done
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' android/app/src/main/AndroidManifest.xml
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' ios/Runner/Runner.entitlements
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/bloc/notification/fcm_setting.dart
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/bloc/notification/local_notification_setting.dart
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/controller/webview_controller.dart
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/screen/webview_screen.dart
 
       - name: Commit and Push Changes
         run: |
