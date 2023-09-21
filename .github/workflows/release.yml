@@ -28,4 +28,4 @@ jobs:
           git config --global user.name ${{ secrets.GIT_USER_NAME }}
           git add .
           git commit -m "URL changed: dev.uspray -> uspray"
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin HEAD:${{ github.head_ref }} --follow-tags -u ${{ secrets.GIT_PAT }}
