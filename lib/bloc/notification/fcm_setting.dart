@@ -49,7 +49,7 @@ void fcmSetting() async{
 
   // Listen to the onMessageOpenedApp stream
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    WebviewMainController.to.loadUrl("https://www.dev.uspray.kr/main/");
+    WebviewMainController.to.loadUrl("https://www.uspray.kr/main/");
   });
 
 }
