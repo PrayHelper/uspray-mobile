@@ -5,6 +5,8 @@ import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
@@ -71,6 +73,16 @@ class WebviewMainController extends GetxController {
     controller.loadRequest(Uri.parse(url));
   }
 
+  void setPlatformSpecifics(WebViewController controller){
+    if (controller.platform is AndroidWebViewController) {
+      (controller.platform as AndroidWebViewController)
+        ..setTextZoom(100)
+        ..enableZoom(false);
+    } else if (controller.platform is WebKitWebViewController) {
+      (controller.platform as WebKitWebViewController);
+      // .allowsBackForwardNavigationGestures = true;
+    }
+  }
 
 
 }
