@@ -7,7 +7,6 @@ import 'bloc/link_sharing/deeplinking.dart';
 import 'bloc/notification/init_notification.dart';
 import 'controller/webview_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/services.dart';
 
 late AndroidNotificationChannel channel;
 
@@ -18,7 +17,5 @@ void main() async {
 
   await initNotification();
   await initDeepLinks();
-  // await InvokeDefault.openManageDefaultAppsSettings();
-  runApp(PrayHelperApp());
-
+  runApp(const PrayHelperApp());
 }

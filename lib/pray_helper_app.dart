@@ -23,18 +23,16 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   Object? _err;
   StreamSubscription? _sub;
 
-  // 앱 정보 저장
   @override
   Widget build(BuildContext context) {
     final controller = WebviewMainController.to.getController();
+    WebviewMainController.to.setPlatformSpecifics(controller);
     if (controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);
     }
 
     return FutureBuilder<List<String>?>(
-      future: Future.wait(
-        [getFcmToken(), SplashDelay.waiting() ],
-      ),
+      future: Future.wait([getFcmToken(), SplashDelay.waiting()]),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         return (snapshot.hasData)
             ? MaterialApp(
