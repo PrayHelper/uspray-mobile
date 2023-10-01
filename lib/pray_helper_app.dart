@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:com.prayhelper.uspray/screen/android_webview.dart';
 import 'package:flutter/material.dart';
 import 'package:com.prayhelper.uspray/screen/webview_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
@@ -27,11 +28,11 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   // 앱 정보 저장
   @override
   Widget build(BuildContext context) {
-    final controller = WebviewMainController.to.getController();
-    controller.enableZoom(false);
-    if (controller.platform is AndroidWebViewController) {
-      AndroidWebViewController.enableDebugging(true);
-    }
+    // final controller = WebviewMainController.to.getController();
+    // controller.enableZoom(false);
+    // if (controller.platform is AndroidWebViewController) {
+    //   AndroidWebViewController.enableDebugging(true);
+    // }
 
     return FutureBuilder<List<String>?>(
       future: Future.wait(
@@ -43,7 +44,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
                 builder: (context, child) {
                   return MediaQuery(
                     child: SafeArea(
-                      child: WebViewScreen(controller: controller),
+                      child: AndroidWebView(),
                     ),
                     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                   );

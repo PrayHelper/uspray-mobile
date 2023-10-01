@@ -4,8 +4,7 @@ import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webview_flutter_android/webview_flutter_android.dart';
-import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../debug/logger.dart';
 
 class WebviewMainController extends GetxController {
