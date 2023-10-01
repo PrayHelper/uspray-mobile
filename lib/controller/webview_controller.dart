@@ -4,8 +4,8 @@ import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 import '../debug/logger.dart';
 
 class WebviewMainController extends GetxController {
@@ -18,7 +18,8 @@ class WebviewMainController extends GetxController {
       NavigationDelegate(
         onProgress: (int progress) {},
         onPageStarted: (String url) {},
-        onPageFinished: (String url) {},
+        onPageFinished: (String url) {
+        },
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async {
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음
