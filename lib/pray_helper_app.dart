@@ -26,6 +26,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   @override
   Widget build(BuildContext context) {
     final controller = WebviewMainController.to.getController();
+    WebviewMainController.to.setPlatformSpecifics(controller);
     if (controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);
     }
