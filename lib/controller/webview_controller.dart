@@ -23,6 +23,7 @@ class WebviewMainController extends GetxController {
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async {
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음
+          logger.d("PAGE FINISHED:: ${request.url}");
           return NavigationDecision.navigate;
         },
       ),

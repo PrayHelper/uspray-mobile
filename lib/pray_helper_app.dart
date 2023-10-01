@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:com.prayhelper.uspray/screen/android_webview.dart';
-import 'package:com.prayhelper.uspray/screen/webview_screen_before.dart';
+import 'package:com.prayhelper.uspray/screen/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:com.prayhelper.uspray/screen/webview_screen.dart';
 import 'package:com.prayhelper.uspray/screen/splash_screen.dart';
@@ -41,7 +41,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
             ? MaterialApp(
                 builder: (context, child) {
                   return SafeArea(
-                    child: WebViewScreenBefore(controller: controller),
+                    child: WebViewScreen(controller: controller),
                   );
                 },
               )
