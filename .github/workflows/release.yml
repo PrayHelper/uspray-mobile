@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  url_change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Replace URLs
+        run: |
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' ios/Runner/Runner.entitlements
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' android/app/src/main/AndroidManifest.xml
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/bloc/notification/fcm_setting.dart
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/bloc/notification/local_notification_setting.dart
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/controller/webview_controller.dart
+          sed -i 's|www.dev.uspray.kr|www.uspray.kr|g' lib/screen/webview_screen.dart
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email ${{ secrets.GIT_USER_EMAIL }}
+          git config --global user.name ${{ secrets.GIT_USER_NAME }}
+          git add .
+          git commit -m "URL changed: dev.uspray -> uspray"
+          git push origin HEAD:${{ github.head_ref }}
