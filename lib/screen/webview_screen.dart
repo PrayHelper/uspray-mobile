@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:com.prayhelper.uspray/debug/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -12,16 +13,18 @@ class WebViewScreen extends StatefulWidget {
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WillPopScope(
+      body: SizedBox(
+        child: WillPopScope(
             child: WebViewWidget(
-                controller: widget.controller,
-              ),
-            onWillPop: () {
+              controller: widget.controller,
+            ),
+            onWillPop: () async{
               return onGoBack();
-            }
+            }),
       ),
     );
   }
