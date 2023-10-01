@@ -56,7 +56,7 @@ class WebviewMainController extends GetxController {
           shareLinkForAOS(data['url']);
         },
     )
-    ..loadRequest(Uri.parse('https://www.uspray.kr/'));
+    ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
 
   WebViewController getController() {
     return controller;
