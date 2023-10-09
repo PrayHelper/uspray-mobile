@@ -10,7 +10,7 @@
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="Uspray"
+        android:label="유스프레이"
         android:usesCleartextTraffic="true">
         <activity
             android:name="com.prayhelper.uspray.MainActivity"
