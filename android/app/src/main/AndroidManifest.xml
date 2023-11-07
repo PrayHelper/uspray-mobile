@@ -41,14 +41,6 @@
                 <data
                     android:host="www.uspray.kr"
                     android:scheme="https" />
-                <data android:host="kakaoplus"
-                    android:scheme="kakao80bf50fbdfeae9aa0acf19984aef9165" />
-                <data android:host="plusfriend"
-                    android:scheme="kakao80bf50fbdfeae9aa0acf19984aef9165" />
-                <data
-                    android:scheme="kakaoplus"
-                    android:host="home"
-                    android:path="/_UgxhYxj/add" />
 
             </intent-filter>
 
