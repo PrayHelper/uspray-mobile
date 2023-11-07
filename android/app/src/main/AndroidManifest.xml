@@ -49,7 +49,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="kakaostory"
+                <data android:host="kakaoplus"
                     android:scheme="kakao80bf50fbdfeae9aa0acf19984aef9165" />
 
             </intent-filter>
