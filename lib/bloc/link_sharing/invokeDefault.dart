@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:com.prayhelper.uspray/debug/logger.dart';
 import 'package:flutter/services.dart';
 
 class InvokeDefault {
@@ -13,9 +11,7 @@ class InvokeDefault {
         await channel.invokeMethod('openManageDefaultAppsSettings');
       }
     } on PlatformException catch (e) {
-      logger.d('Error: $e');
     } catch (e){
-      logger.d('Error: $e');
     }
   }
 }

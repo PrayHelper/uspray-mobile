@@ -2,11 +2,15 @@
     package="com.prayhelper.uspray">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="Uspray"
+        android:label="유스프레이"
         android:usesCleartextTraffic="true">
         <activity
             android:name="com.prayhelper.uspray.MainActivity"
@@ -17,7 +21,8 @@
             android:showWhenLocked="true"
             android:theme="@style/LaunchTheme"
             android:turnScreenOn="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="flutter_deeplinking_enabled"
@@ -34,13 +39,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.dev.uspray.kr"
-                    android:scheme="https" />
-                <data
                     android:host="www.uspray.kr"
-                    android:scheme="https" />
-                <data
-                    android:host="www.intg.uspray.kr"
                     android:scheme="https" />
             </intent-filter>
 
@@ -71,9 +70,4 @@
             android:value="high_importance_channel" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 </manifest>
