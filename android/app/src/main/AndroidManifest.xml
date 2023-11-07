@@ -41,15 +41,10 @@
                 <data
                     android:host="www.uspray.kr"
                     android:scheme="https" />
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:host="kakao80bf50fbdfeae9aa0acf19984aef9165"
-                    android:scheme="kakaoplus" />
+                <data android:scheme="kakao80bf50fbdfeae9aa0acf19984aef9165"
+                    android:host="kakaoplus" />
+                <data android:scheme="intent"
+                    android:host="plusfriend" />
 
             </intent-filter>
 
