@@ -49,10 +49,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <!-- "kakao${YOUR_NATIVE_APP_KEY}://${PRODUCT_NAME}" 형식의 앱 실행 스킴 설정 -->
-                <!--TODO: 카카오링크를 사용하는 경우 아래의 data를 추가해주세요.-->
-                <data android:host="kakaolink"
-                    android:scheme="kakao${YOUR_NATIVE_APP_KEY}" />
+                <data android:host="kakaostory"
+                    android:scheme="kakao80bf50fbdfeae9aa0acf19984aef9165" />
+
             </intent-filter>
 
         </activity>

@@ -23,10 +23,5 @@ void main() async {
   await initDeepLinks();
   // await InvokeDefault.openManageDefaultAppsSettings();
 
-  // For Kakao
-  KakaoSdk.init(
-    nativeAppKey: '{YOUR_NATIVE_APP_KEY}',
-    // javaScriptAppKey: '{YOUR_JAVASCRIPT_APP_KEY}',
-  );
   runApp(PrayHelperApp());
 }
