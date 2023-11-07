@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../debug/logger.dart';
-
 class WebViewScreen extends StatefulWidget {
   WebViewScreen({super.key, required this.controller});
 
@@ -30,7 +28,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
     );
   }
 
-  //TODO 이후 나가는 창 커스터마이징
   Future<bool> showExitPopup() async {
     return await showDialog(
           context: context,
@@ -65,12 +62,14 @@ class _WebViewScreenState extends State<WebViewScreen> {
   }
 
   Future<bool> onGoBack() async {
-    //TODO URL CHANGE
-    if (await widget.controller.canGoBack() &&
-        await widget.controller.currentUrl() !=
-            'https://www.dev.uspray.kr/main') {
-      widget.controller.goBack();
-      return Future.value(false);
+    if (await widget.controller.currentUrl() != 'https://www.dev.uspray.kr/main') {
+      if(!await widget.controller.canGoBack()){
+        Future<bool> dialogResult = showExitPopup();
+        return Future.value(dialogResult);
+      }else {
+        widget.controller.goBack();
+        return Future.value(false);
+      }
     } else {
       Future<bool> dialogResult = showExitPopup();
       return Future.value(dialogResult);

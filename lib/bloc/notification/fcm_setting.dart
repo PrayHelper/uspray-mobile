@@ -2,8 +2,6 @@
 import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:com.prayhelper.uspray/controller/webview_controller.dart';
-
-import '../../debug/logger.dart';
 import 'local_notification_setting.dart';
 
 void fcmSetting() async{
@@ -51,10 +49,7 @@ void fcmSetting() async{
 
   // Listen to the onMessageOpenedApp stream
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    WebviewMainController.to.loadUrl("https://www.naver.com/");
-    //TODO REAL
-    // final url = message.data['url'];
-    // if (url != null) {}
+    WebviewMainController.to.loadUrl("https://www.dev.uspray.kr/main/");
   });
 
 }

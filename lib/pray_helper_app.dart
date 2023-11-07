@@ -7,7 +7,6 @@ import 'package:uni_links/uni_links.dart';
 import 'controller/token_controller.dart';
 import 'controller/webview_controller.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
-import 'debug/logger.dart';
 
 bool _initialUriIsHandled = false;
 
@@ -24,18 +23,16 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
   Object? _err;
   StreamSubscription? _sub;
 
-  // 앱 정보 저장
   @override
   Widget build(BuildContext context) {
     final controller = WebviewMainController.to.getController();
+    WebviewMainController.to.setPlatformSpecifics(controller);
     if (controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);
     }
 
     return FutureBuilder<List<String>?>(
-      future: Future.wait(
-        [getFcmToken(), SplashDelay.waiting() ],
-      ),
+      future: Future.wait([getFcmToken(), SplashDelay.waiting()]),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         return (snapshot.hasData)
             ? MaterialApp(
@@ -67,21 +64,16 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
     if (!_initialUriIsHandled) {
       _initialUriIsHandled = true;
 
-      logger.d('_handleInitialUri called');
       try {
         final uri = await getInitialUri();
         if (uri == null) {
-          logger.d('no initial uri');
         } else {
-          logger.d('got initial uri: $uri');
         }
         if (!mounted) return;
         setState(() => _initialUri = uri);
       } on PlatformException {
-        logger.d('falied to get initial uri');
       } on FormatException catch (err) {
         if (!mounted) return;
-        logger.d('malformed initial uri');
         setState(() => _err = err);
       }
     }
