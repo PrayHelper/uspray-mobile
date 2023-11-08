@@ -7,4 +7,5 @@
 #
 brew install cocoapods
 pod install
+pod --version
 echo "after pod install"
