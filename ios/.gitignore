@@ -11,7 +11,7 @@
 **/DerivedData/
 Icon?
 **/Pods/
-!**/Pods/Target\ Support\ Files/Pods-Runner/
+!ios/Pods/Target\ Support\ Files/Pods-Runner/
 **/.symlinks/
 profile
 xcuserdata
