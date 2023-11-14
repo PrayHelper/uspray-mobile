@@ -4,6 +4,7 @@ import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
@@ -23,11 +24,10 @@ class WebviewMainController extends GetxController {
         onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          logger.d(request.url);
           if(request.url == "intent://plusfriend/chat/_UgxhYxj#Intent;scheme=kakaoplus;package=com.kakao.talk;end"){
-            request.url = "https://pf.kakao.com/_UgxhYxj";
+            await _launchKakaoplusUrl();
+            return NavigationDecision.prevent;
           }
-          //TODO 특정 url을 따른 로직을 핸들링할 수 있음
           return NavigationDecision.navigate;
         },
       ),
@@ -93,4 +93,13 @@ class WebviewMainController extends GetxController {
 
 }
 
+Future<void> _launchKakaoplusUrl() async {
+  const kakaoLink = 'kakaoplus://plusfriend/home/_UgxhYxj';
+  Uri kakaoUri = Uri.parse(kakaoLink);
 
+  logger.d("LINK : $kakaoLink");
+
+  if (!await launchUrl(kakaoUri)) {
+    throw Exception('Could not launch $kakaoLink');
+  }
+}
