@@ -24,6 +24,9 @@ class WebviewMainController extends GetxController {
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
           logger.d(request.url);
+          if(request.url == "intent://plusfriend/chat/_UgxhYxj#Intent;scheme=kakaoplus;package=com.kakao.talk;end"){
+            request.url = "https://pf.kakao.com/_UgxhYxj";
+          }
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음
           return NavigationDecision.navigate;
         },

@@ -9,6 +9,8 @@ import 'bloc/notification/init_notification.dart';
 import 'controller/webview_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'logger.dart';
+
 late AndroidNotificationChannel channel;
 
 void main() async {
@@ -18,6 +20,6 @@ void main() async {
 
   await initNotification();
   await initDeepLinks();
-  
+
   runApp(const PrayHelperApp());
 }
