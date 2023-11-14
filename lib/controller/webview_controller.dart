@@ -8,6 +8,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
+import '../logger.dart';
+
 class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
 
@@ -21,7 +23,7 @@ class WebviewMainController extends GetxController {
         onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          print(request.url + "/////////////////////");
+          logger.d(request.url);
           //TODO 특정 url을 따른 로직을 핸들링할 수 있음
           return NavigationDecision.navigate;
         },
