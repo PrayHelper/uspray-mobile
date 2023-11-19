@@ -97,8 +97,6 @@ Future<void> _launchKakaoplusUrl() async {
   const kakaoLink = 'kakaoplus://plusfriend/home/_UgxhYxj';
   Uri kakaoUri = Uri.parse(kakaoLink);
 
-
-
   if (await canLaunchUrl(kakaoUri)) {
     logger.d("Can launch LINK : $kakaoLink");
     launchUrl(kakaoUri);
