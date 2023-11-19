@@ -4,6 +4,7 @@ import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
@@ -23,10 +24,10 @@ class WebviewMainController extends GetxController {
         onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          // if(request.url == "intent://plusfriend/chat/_UgxhYxj#Intent;scheme=kakaoplus;package=com.kakao.talk;end"){
-          //   await _launchKakaoplusUrl();
-          //   return NavigationDecision.prevent;
-          // }
+          if(request.url == "intent://plusfriend/chat/_UgxhYxj#Intent;scheme=kakaoplus;package=com.kakao.talk;end"){
+            await _launchKakaoplusUrl();
+            return NavigationDecision.prevent;
+          }
           return NavigationDecision.navigate;
         },
       ),
@@ -96,9 +97,11 @@ Future<void> _launchKakaoplusUrl() async {
   const kakaoLink = 'kakaoplus://plusfriend/home/_UgxhYxj';
   Uri kakaoUri = Uri.parse(kakaoLink);
 
-  logger.d("LINK : $kakaoLink");
 
-  // if (!await launchUrl(kakaoUri)) {
-  //   throw Exception('Could not launch $kakaoLink');
-  // }
+
+  if (await canLaunchUrl(kakaoUri)) {
+    logger.d("Can launch LINK : $kakaoLink");
+    launchUrl(kakaoUri);
+  }
+
 }
