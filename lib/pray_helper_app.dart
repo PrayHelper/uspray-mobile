@@ -32,7 +32,7 @@ class _PrayHelperAppState extends State<PrayHelperApp> {
     }
 
     return FutureBuilder<List<String>?>(
-      future: Future.wait([getFcmToken(), SplashDelay.waiting()]),
+      future: Future.wait([SplashDelay.waiting()]),
       builder: (context, AsyncSnapshot<List<String>?> snapshot) {
         return (snapshot.hasData)
             ? MaterialApp(
