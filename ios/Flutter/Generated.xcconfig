@@ -4,7 +4,7 @@ FLUTTER_APPLICATION_PATH=/Users/hakrim/FlutterProj/prayhelper
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=/Users/hakrim/FlutterProj/prayhelper/lib/main.dart
 FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
+FLUTTER_BUILD_NAME=1.1.0
 FLUTTER_BUILD_NUMBER=3
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
 EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
