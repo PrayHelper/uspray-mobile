@@ -31,7 +31,7 @@ class WebviewMainController extends GetxController {
         //JavaScriptChannel 이름
         "FlutterGetDeviceToken",
         onMessageReceived: (JavaScriptMessage message) async {
-          String fcmToken = await getFcmToken();
+          String? fcmToken = await getFcmToken();
           sendDeviceToken(fcmToken);
         },
     )
@@ -56,13 +56,13 @@ class WebviewMainController extends GetxController {
           shareLinkForAOS(data['url']);
         },
     )
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
+    ..loadRequest(Uri.parse('https://www.uspray.kr/'));
 
   WebViewController getController() {
     return controller;
   }
 
-  static void sendDeviceToken(String token){
+  static void sendDeviceToken(String? token){
     controller.runJavaScript("window.onReceiveDeviceToken(\"$token\");");
   }
   static void sendAuthToken(String? token){
