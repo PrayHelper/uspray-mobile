@@ -98,8 +98,10 @@ Future<void> _launchKakaoplusUrl() async {
   Uri kakaoUri = Uri.parse(kakaoLink);
 
   if (await canLaunchUrl(kakaoUri)) {
+    logger.d("this should not be open because kakaotalk is not installed");
     logger.d("Can launch LINK : $kakaoLink");
-    launchUrl(kakaoUri);
+    //TODO Test중
+    // launchUrl(kakaoUri);
   }
 
 }
