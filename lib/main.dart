@@ -12,7 +12,6 @@ import 'package:firebase_core/firebase_core.dart';
 late AndroidNotificationChannel channel;
 
 void main() async {
-
   Get.put(WebviewMainController());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
