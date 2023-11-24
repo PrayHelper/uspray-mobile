@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../message/message.dart';
+
 class WebViewScreen extends StatefulWidget {
   WebViewScreen({super.key, required this.controller});
 
@@ -38,7 +40,11 @@ class _WebViewScreenState extends State<WebViewScreen> {
               Row(children: [
                 Expanded(flex:1, child: Container()),
                 ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(false),
+                    onPressed: ()async{
+                      //TODO For debugging
+                      Navigator.of(context).pop(false);
+                      await sendLink();
+                    },
                     child: const Text('아니오'),
                     style: ElevatedButton.styleFrom(
                         backgroundColor:

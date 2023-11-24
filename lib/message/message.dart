@@ -8,7 +8,7 @@ final TextTemplate defaultText = TextTemplate(
   ),
 );
 
-void sendLink() async {
+Future<void> sendLink() async {
   // 카카오톡 실행 가능 여부 확인
   bool isKakaoTalkSharingAvailable = await ShareClient.instance.isKakaoTalkSharingAvailable();
 
