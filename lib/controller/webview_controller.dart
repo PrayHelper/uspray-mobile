@@ -4,9 +4,11 @@ import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+
 
 class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
@@ -21,7 +23,10 @@ class WebviewMainController extends GetxController {
         onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          //TODO 특정 url을 따른 로직을 핸들링할 수 있음
+          if(request.url == "https://pf.kakao.com/_UgxhYxj"){
+            await _launchKakaoplusUrl();
+            return NavigationDecision.prevent;
+          }
           return NavigationDecision.navigate;
         },
       ),
@@ -87,4 +92,11 @@ class WebviewMainController extends GetxController {
 
 }
 
-
+Future<void> _launchKakaoplusUrl() async {
+  Uri url = await TalkApi.instance.addChannelUrl("_UgxhYxj");
+  try {
+    await launchBrowserTab(url);
+  } catch (e) {
+    print("카톡 채널 추가 실패 에러 : $e");
+  }
+}

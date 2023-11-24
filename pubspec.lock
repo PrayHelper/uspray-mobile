@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  asn1lib:
+    dependency: transitive
+    description:
+      name: asn1lib
+      sha256: b74e3842a52c61f8819a1ec8444b4de5419b41a7465e69d4aa681445377398b0
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.1"
   async:
     dependency: transitive
     description:
@@ -113,6 +121,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.8"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      sha256: ce75a1b40947fea0a0e16ce73337122a86762e38b982e1ccb909daa3b9bc4197
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.2"
+  encrypt:
+    dependency: transitive
+    description:
+      name: encrypt
+      sha256: "4fd4e4fdc21b9d7d4141823e1e6515cd94e7b8d84749504c232999fba25d9bbb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -288,6 +312,78 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.8.1"
+  kakao_flutter_sdk:
+    dependency: "direct main"
+    description:
+      name: kakao_flutter_sdk
+      sha256: f6d3ff877162a73d2bf6a5bc20b0bc34c3aaf4cc39226e15f2cfebfdde21d00c
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_auth:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_auth
+      sha256: "48a84519fded04b686852c11d95e00483d295ee703f56d357059cbe0c556a969"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_common:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_common
+      sha256: e908d4e1c672cc3c4f56bb9b04e8fb5775ee7617503c4b43100d0d123e5735d1
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_friend:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_friend
+      sha256: a78b0943d88a06ce9a5fd064c3ac11c85e0504fda98affca5018ce239adc6abd
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_navi:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_navi
+      sha256: "25fba6252be333dbd58a24b86da88aff03c0a55ab0e1cd597fed0c4ab13a3b52"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_share:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_share
+      sha256: "05b4641bc16eb63ebf77744249f9c0ed3c240e7cda734070adaeb55999a61053"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_talk:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_talk
+      sha256: "90dc2a1664f91fa9a5d8aec1b308d556d8c112dbbb636791e0b75ee0285b7334"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_template:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_template
+      sha256: "709201bc5a90127e00d1828baabf0ad2dd678afc28611101e18f4e77071d03ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
+  kakao_flutter_sdk_user:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_user
+      sha256: "73809bd6d9066d663642e23b4d63ec3c68e31c0dbaeb2143084cf1fad59f6155"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.0"
   lints:
     dependency: transitive
     description:
@@ -296,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  logger:
+    dependency: "direct main"
+    description:
+      name: logger
+      sha256: "6bbb9d6f7056729537a4309bda2e74e18e5d9f14302489cc1e93f33b3fe32cac"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2+1"
   matcher:
     dependency: transitive
     description:
@@ -581,6 +685,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.0"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      sha256: eb1e00ab44303d50dd487aab67ebc575456c146c6af44422f9c13889984c00f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.11"
+  url_launcher_android:
+    dependency: transitive
+    description:
+      name: url_launcher_android
+      sha256: "92b58f21a55f072378696e7401e9529e819e23cdfb130060af6058a8f4f66653"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.1"
+  url_launcher_ios:
+    dependency: transitive
+    description:
+      name: url_launcher_ios
+      sha256: "7c65021d5dee51813d652357bc65b8dd4a6177082a9966bc8ba6ee477baa795f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.5"
   url_launcher_linux:
     dependency: transitive
     description:
@@ -589,6 +717,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.5"
+  url_launcher_macos:
+    dependency: transitive
+    description:
+      name: url_launcher_macos
+      sha256: b55486791f666e62e0e8ff825e58a023fd6b1f71c49926483f1128d3bbd8fe88
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.7"
   url_launcher_platform_interface:
     dependency: transitive
     description:

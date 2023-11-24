@@ -32,4 +32,5 @@ class MainActivity : FlutterActivity() {
         val intent = Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)
         startActivity(intent)
     }
+
 }
