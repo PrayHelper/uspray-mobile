@@ -39,12 +39,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
+                    android:host="kakaolink"
+                    android:scheme="kakao423349d4fe1a359dedb58477a8d5a9c6" />
+                <data
                     android:host="www.uspray.kr"
                     android:scheme="https" />
-                <data android:scheme="kakao80bf50fbdfeae9aa0acf19984aef9165"
-                    android:host="kakaoplus" />
-                <data android:scheme="intent"
-                    android:host="plusfriend" />
 
             </intent-filter>
 
