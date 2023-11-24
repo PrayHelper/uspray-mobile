@@ -18,6 +18,12 @@ void main() async {
 
   await initNotification();
   await initDeepLinks();
-  
+
+  KakaoSdk.init(
+    //TODO hiding
+    nativeAppKey: '423349d4fe1a359dedb58477a8d5a9c6',
+    javaScriptAppKey: '025d42623fd08aa6b62f1542ac9cf3ad',
+  );
+
   runApp(const PrayHelperApp());
 }
