@@ -18,6 +18,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  KakaoSdk.init(
+      nativeAppKey:"80bf50fbdfeae9aa0acf19984aef9165",
+      javaScriptAppKey:"06f05fc4656e611107402eb16961d5ff"
+  );
+
   await initNotification();
   await initDeepLinks();
 

@@ -4,12 +4,11 @@ import 'package:com.prayhelper.uspray/controller/sharing_controller.dart';
 import 'package:com.prayhelper.uspray/controller/token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-import '../logger.dart';
 
 class WebviewMainController extends GetxController {
   static WebviewMainController get to => Get.find();
@@ -24,7 +23,7 @@ class WebviewMainController extends GetxController {
         onPageFinished: (String url) {},
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) async{
-          if(request.url == "intent://plusfriend/chat/_UgxhYxj#Intent;scheme=kakaoplus;package=com.kakao.talk;end"){
+          if(request.url == "https://pf.kakao.com/_UgxhYxj"){
             await _launchKakaoplusUrl();
             return NavigationDecision.prevent;
           }
@@ -62,7 +61,7 @@ class WebviewMainController extends GetxController {
           shareLinkForAOS(data['url']);
         },
     )
-    ..loadRequest(Uri.parse('https://www.dev.uspray.kr/'));
+    ..loadRequest(Uri.parse('https://www.uspray.kr/'));
 
   WebViewController getController() {
     return controller;
@@ -94,14 +93,10 @@ class WebviewMainController extends GetxController {
 }
 
 Future<void> _launchKakaoplusUrl() async {
-  const kakaoLink = 'kakaoplus://plusfriend/home/_UgxhYxj';
-  Uri kakaoUri = Uri.parse(kakaoLink);
-
-  if (await canLaunchUrl(kakaoUri)) {
-    logger.d("this should not be open because kakaotalk is not installed");
-    logger.d("Can launch LINK : $kakaoLink");
-    //TODO Test중
-    // launchUrl(kakaoUri);
+  Uri url = await TalkApi.instance.addChannelUrl("_UgxhYxj");
+  try {
+    await launchBrowserTab(url);
+  } catch (e) {
+    print("카톡 채널 추가 실패 에러 : $e");
   }
-
 }
