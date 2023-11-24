@@ -28,17 +28,31 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-                  <string>Editor</string>
-                  <key>CFBundleURLName</key>
-                  <string>uspraymobile</string>
-                  <key>CFBundleURLSchemes</key>
-                  <array>
-                    <string>uspraymobile</string>
-                  </array>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>uspraymobile</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>uspraymobile</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao123456789</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<string>NO</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>KakaoSDKShare</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -67,7 +81,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<string>NO</string>
 </dict>
 </plist>
